@@ -1,0 +1,270 @@
+@charset "UTF-8";
+
+/*body {
+    min-width: 1200px;
+}
+
+.fixed-sub-container {
+    max-width: 1200px;
+}*/
+
+.house-info-container {
+	width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.house-info-container:before, .house-info-container:after {
+	content: " ";
+	display: table;
+}
+
+.house-info-container:after {
+	clear: both;
+}
+
+.house-main {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 650px;
+    margin: 10px 20px 0 0;
+    background: #fff;
+    float: left;
+}
+
+.house-info {
+	padding: 0 20px;
+}
+
+.house-header {
+    border-bottom: 1px solid #e6e6e6;
+    position: relative;
+}
+
+.house-header .house-title {
+    padding: 30px 30px 16px 0;
+}
+
+.house-header .house-title h1 {
+    margin: 0;
+    font-size: 24px;
+    display: inline;
+    vertical-align: sub;
+}
+
+.house-title-footer {
+    color: #999;
+    padding-bottom: 20px;
+}
+
+.house-content {
+	margin-top: 20px;
+}
+
+.house-content:before, .house-content:after {
+	content: " ";
+	display: table;
+}
+
+.house-content:after {
+	clear: both;
+}
+
+.house-gallery {
+    width: 300px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    position: relative;
+    float: left;
+}
+
+.empty-img-placeholder {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.empty-img-placeholder img {
+    width: 300px;
+    height: 300px;
+}
+
+.house-gallery img {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.house-gallery .img-container {
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    line-height: 300px;
+}
+
+.house-price {
+    font-size: 24px;
+}
+
+.house-basic-info {
+    float: left;
+    padding: 0 0 0 20px;
+    width: 300px;
+}
+
+.house-common-header {
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.house-common-header .section-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: .6em 0;
+}
+
+.house-basic-info ul li {
+    margin: 5px 0;
+    line-height: 30px;
+    font-size: 14px;
+    position: relative;
+
+    border-bottom: 1px dashed #e6e6e6;
+}
+
+.house-basic-info ul li>label {
+	width: 85px;
+	text-align: right;
+	color: #666;
+	display: inline-block;
+	font-weight: 400;
+}
+
+.house-basic-info ul li>span {
+	width: 180px;
+	padding-left: 0px;
+}
+
+.house-poster-contact {
+	padding: 20px 0;
+    border-bottom: 1px dashed #e6e6e6;
+}
+
+.house-poster-contact ul li {
+    border-bottom: none;
+	font-size: 18px;
+}
+
+.house-poster-contact ul li>label {
+	font-weight: 700;
+    color: #fff;
+    border: 1px solid #f93;
+    background-color: #f93;
+    border-radius: 2px;
+    text-align: center;
+    width: 120px;
+    padding: 5px 0;
+}
+
+.house-poster-contact ul li>span {
+	font-size: 22px;
+	color: #f46;
+}
+
+.house-detail {
+	margin-bottom: 40px;
+}
+
+.detail-text {
+    font-size: 18px;
+    line-height: 1.8;
+    word-break: break-all;
+    color: #666;
+}
+
+
+
+
+/********************************/
+/*编辑人*/
+.house-info-container .sidebar {
+    width: 300px;
+    margin-top: 10px;
+    float: left;
+}
+
+.poster-info-container {
+    width: 300px;
+    padding: 0 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+.poster-info-container .avatar {
+	text-align: center;
+	margin: 30px 0 0 0;		
+}
+
+.poster-info-container .avatar a {
+	display: block;
+}
+
+.poster-info-container .avatar img {
+    width: 150px;
+    height: 200px;
+}
+
+.poster-info-container .avatar .avatar-placeholder {
+	width: 150px;
+	height: 200px;
+}
+
+.poster-info-container .avatar .avatar-placeholder.man {
+    background: url(../../img/portal/poster_sex_man_placeholder.png);
+}
+
+.poster-info-container .avatar .avatar-placeholder.woman {
+    background: url(../../img/portal/poster_sex_woman_placeholder.png);
+}
+
+.poster-name {
+    font-size: 20px;
+	text-align: center;
+	height: 2em;
+	line-height: 2em;
+	margin: .5em 0;
+    color: #333;
+}
+
+.poster-detail {
+	padding: .5em 0;
+}
+
+.poster-detail.contact a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f93;
+}
+
+.poster-detail a {
+    text-decoration: underline;
+}
+
+.poster-detail.wx {
+	text-align: center;
+	margin: 0 0 30px 0;	
+}
+
+.poster-detail.wx img {
+	width: 150px;
+	height: 150px;
+}
+
+.poster-detail .empty-placeholder {
+    height: 100px;
+}
+
+

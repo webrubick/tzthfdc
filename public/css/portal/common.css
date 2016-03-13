@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+/*门户网站的CSS*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Hiragino Sans GB','Microsoft YaHei','黑体',sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    min-width: 980px;
+    background-color: #eeeff1;
+}
+
+li, p, ul {
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+:after, :before {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a, a:focus, img {
+    outline: 0;
+}
+
+a {
+    background-color: transparent;
+}
+
+a:hover {
+    color: #f46;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input, input[type=password], input[type=search], select, textarea {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-size: 1em;
+    padding: .5em;
+    outline: 0;
+    -webkit-transition: box-shadow .217s ease;
+    transition: box-shadow .217s ease;
+}
+
+input:focus, input[type=password]:focus, input[type=search]:focus, select:focus, textarea:focus {
+    border: 1px solid #00d1c1;
+}
+
+.fixed-sub-container {
+	max-width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sub-container {
+    background-color: #fff;
+}
+
+/********************************************/
+/*顶部*/
+header {
+	box-shadow: 0 1px 2px #ccc;	
+}
+
+header.welcome {
+    height: 50px;
+    line-height: 50px;
+}
+
+header.welcome .call {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#logo-header {
+    background-image: url(../../img/portal/topbg0.png);
+    background-repeat: repeat-x;
+}
+
+header #top-nav {
+	height: 90px;
+	line-height: 140px;
+    background-image: url(../../img/portal/topbg.gif);
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+header .city-logo {
+    position: relative;
+    bottom: 4px;
+    margin-right: 5px;
+    /*font-family: Microsoft Yahei,Hiragino box-shadow: ns GB,WenQuanYi Micro Hei,sans-serif;*/
+    font-weight: 700;
+    font-size: 24px;
+    color: #f46;
+}
+
+header .primary-logo-img {
+    width: 120px;
+    height: 60px;
+    margin-right: 5px;
+    vertical-align: baseline;
+    border: none;
+    outline: 0;
+}
+
+.section-sep {
+	height: 1em;
+}
+
+[class*="glyphicon-"]:before, [class^=glyphicon-]:before {
+    font-family: 'Glyphicons Halflings' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.highlight {
+    color: #f46;
+}
+
+
+
+/********************************************/
+/*底部*/
+footer {
+	margin-top: 2em;
+	height: 150px;
+	padding-top: 45px;
+	padding-bottom: 40px;
+	color: silver;
+	background: #2b2d2e;
+	text-align: center;
+	line-height: normal;
+}

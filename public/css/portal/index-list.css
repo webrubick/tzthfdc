@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+#listing-result .listing-result-hint {
+    height: 80px;
+	padding: 20px 1.5em;
+    line-height: 40px;
+}
+
+.listing-result-hint img {
+    float: right;
+}
+
+#house-list {
+    border-top: 1px dotted #eee;
+	
+}
+
+#house-list>li {
+    padding: 20px 1.5em;
+    border-bottom: 1px dotted #cdcdcd;
+    -webkit-transition: background-color .271s ease;
+    transition: background-color .271s ease;
+    position: relative;
+}
+
+#house-list>li:hover {
+    background-color: #f9f9f9;
+}
+
+#house-list>li:before, #house-list>li:after {
+    content: " ";
+    display: table;
+}
+
+#house-list>li:after {
+    clear: both;
+}
+
+
+#house-list a.media-cap {
+    height: 100px;
+    width: 150px;
+    float: left;
+    background: #cdcdcd;
+    display: block;
+    margin-right: 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+#house-list a.media-cap img {
+    width: 150px;
+    transform-origin: center;
+    -webkit-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+}
+
+#house-list a.media-cap img:hover {
+    -webkit-transform: scale(1.2,1.2);
+            transform: scale(1.2,1.2);
+}
+
+#house-list .media-body {
+    overflow: hidden;
+}
+
+#house-list .media-body-title {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+#house-list .media-body-title .highlight {
+    float: right;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#house-list .media-body-title>a {
+    vertical-align: middle;
+    font-weight: 700;
+    margin-right: .2em;
+}
+
+#house-list .media-body-title>a.house-title:visited {
+    color: #666;
+}
+
+#house-list .house-info {
+    min-height: 1.6em;
+    line-height: 1.6em;
+    color: #999;
+    font-size: 14px;
+    margin-top: 1em;
+}
+
+/*分页*/
+#listing-pager {
+    text-align: center;
+}
+
+#listing-pager ul {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 2px;
+}
+
+#listing-pager ul>li {
+    display: inline;
+}
+
+#listing-pager ul>li>a, #listing-pager ul>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin-left: .5em;
+}
+
+#listing-pager .checked>a, #listing-pager ul>li>a:focus, #listing-pager ul>li>a:hover,
+#listing-pager .checked>span, #listing-pager ul>li>span:focus, #listing-pager ul>li>span:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #f46;
+    border-color: #cdcdcd;
+    cursor: default;
+}

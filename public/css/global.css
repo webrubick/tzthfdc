@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+/* ================================================================================ *\
+   HTML Elements
+\* ================================================================================ */
+
+/*------------------------------------------------------------*\
+  Elements
+\*------------------------------------------------------------*/
+body, form, img, ul, ol, li, dl, dt, dd, table, th, td, p, iframe, h1, h2, h3, h4, h5, h6, blockquote, input, textarea, select {
+  margin:0; padding:0;
+}
+
+body {
+  position:relative;
+  color:#000; 
+  font-size:12px; 
+  font-family:"Microsoft YaHei", "微软雅黑"; 
+}
+
+div {
+  margin: 0 auto;
+}
+
+ul, li {
+  list-style-type:none;
+}
+
+table {
+  border-collapse:collapse; 
+  border-spacing:0;
+}
+
+img, input, textarea, select {
+  vertical-align:middle;
+}
+
+img {
+  border:none;
+}
+
+/* Links */
+a {
+  color:#000; 
+  text-decoration:none; 
+  outline:none;
+}
+
+input, textarea, select {
+  color:#000; 
+  font-size:12px; 
+  font-family:"微软雅黑";
+}
+
+
+/*------------------------------------------------------------*\
+  Fonts
+\*------------------------------------------------------------*/
+.f-normal{font-weight:normal;}
+.f-bold{font-weight:bold;}
+.f-uline{text-decoration:underline;}
+
+.f-white{color:#fff;}
+.f-black{color:#000;}
+.f-grey{color:#999;}
+.f-blue{color:#2980b9;}
+.f-red{color:#e74c3c;}
+
+
+/* ================================================================================ *\
+   Layout
+\* ================================================================================ */
+
+/*------------------------------------------------------------*\
+  Composition
+\*------------------------------------------------------------*/
+
+/* Float | Align | Position
+----------------------------------*/
+.fl-l{float:left;}
+.fl-r{float:right;}
+.fl-clear{clear:both;}
+
+.al-l{text-align:left;}
+.al-r{text-align:right;}
+.al-c{text-align:center;}
+
+.pos-abs{position:absolute;}
+.pos-fix{position:fixed;}
+
+

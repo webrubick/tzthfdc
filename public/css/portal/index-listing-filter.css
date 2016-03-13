@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+/********************************************/
+/*顶部的标签bar*/
+.top-tab {
+    margin: 10px auto 0;
+    background: #ededed;
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+
+.top-tab ul {
+	font-size: 18px;
+	list-style: none;
+}
+
+.top-tab ul:before, .top-tab ul:after {
+	content: " ";
+    display: table;
+}
+
+.top-tab ul:after {
+	clear: both;
+}
+
+.top-tab ul li {
+	float: left;
+}
+
+.top-tab ul a {
+	display: inline-block;
+    padding: 0 30px;
+    line-height: 50px;
+    color: #999;
+    text-decoration: none;
+    height: 50px;
+}
+
+.top-tab ul a.active {
+	cursor: default;
+    position: relative;
+    color: #000;
+    background: #fff;
+}
+
+#listing-filters {
+	margin-top: 0;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding-top: .5em;
+}
+
+#listing-filters fieldset {
+	border: none;
+    padding: 0 1em;
+    margin: 0;
+    overflow: hidden;
+}
+
+#listing-filters .legend {
+	float: left;
+    display: inline-block;
+    padding: .5em 0;
+    margin: .5em 0;
+    border: 1px solid transparent;
+    line-height: 1;
+    color: #666;
+}
+
+#listing-filters .links {
+	/*height: 30px;*/
+    width: 90%;
+    overflow: hidden;
+    margin: .5em .5em .5em 6em;
+}
+
+#listing-filters fieldset a {
+	color: #333;
+    display: inline-block;
+    padding: .5em;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    line-height: 1;
+    height: 30px;
+}
+
+#listing-filters .checked {
+	color: #f46;
+    border-color: #f46;
+    text-decoration: none;
+}
+
+#listing-filters .range {
+	padding: 0 .5em;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#listing-filters .range label {
+	line-height: 2em;
+    height: 2em;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: normal;
+}
+
+#listing-filters .range input {
+	background-color: transparent;
+}
+
+#listing-filters .range .number {
+	margin: 0 5px;
+    width: 3.3em;
+    padding: .3em .5em;
+    height: 2em;
+    vertical-align: top;
+}
+
+#listing-filters .range .unit {
+    margin: 0 14px 0 4px;
+}
+
+#listing-filters .range .filter-button {
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    text-decoration: none;
+    -webkit-transition: all .217s ease;
+    transition: all .217s ease;
+    color: #666;
+    background: #fafafa;
+    width: 3.3em;
+    line-height: 0;
+    padding: 0;
+    height: 2em;
+    vertical-align: top;
+}
+
+#listing-filters .range .filter-button:hover {
+    background: #f3f3f3;
+    color: #696969;
+}
+
+#listing-filters .search-fieldset {
+    padding: 0 1em 1em;
+    margin-top: .2em;
+}
+
+#listing-filters .search-fieldset input {
+    width: 360px;
+    color: #333;
+}
+
+#listing-filters .search-fieldset button {
+    position: relative;
+    left: -32px;
+    font-size: 18px;
+    vertical-align: middle;
+    font-weight: 700;
+    padding: 5px;
+    border: none;
+    color: #666;
+    -webkit-transition: color .217s ease;
+    transition: color .217s ease;
+    background: 0 0;
+    outline: 0;
+}
+
+#listing-filters .search-fieldset button:hover {
+    color: #00d1c1;
+}
