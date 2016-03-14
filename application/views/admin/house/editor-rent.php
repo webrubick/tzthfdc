@@ -293,6 +293,26 @@
 						</div>
 					</td>
 				</tr>
+                
+                <tr class="house-poster">
+					<th><small>*</small>联系人</th>
+					<td>
+						<div class="house-edit-input-container form-inline">
+							<input type="text" name="poster_name" id="inputPosterName" maxlength="10" class="form-control house-related-long" 
+							tabindex="<?php echo $tabIndex++; ?>" <?php echo (isset($true_name) ? 'value="'.$true_name.'"' : ''); ?> />
+						</div>
+					</td>
+				</tr>
+
+                <tr class="house-poster">
+					<th><small>*</small>联系方式</th>
+					<td>
+						<div class="house-edit-input-container form-inline">
+							<input type="text" name="poster_contact" id="inputPosterContact" maxlength="15" class="form-control house-related-long" 
+							tabindex="<?php echo $tabIndex++; ?>" <?php echo (isset($contact_mobile) ? 'value="'.$contact_mobile.'"' : ''); ?> />
+						</div>
+					</td>
+				</tr>
 
 				<tr>
 					<th></th>

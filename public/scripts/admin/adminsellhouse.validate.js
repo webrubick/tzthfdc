@@ -18,6 +18,10 @@ var inputHouseRightsFrom = $('#inputHouseRightsFrom');
 var inputPrimary = $('#inputPrimary');
 var inputJunior = $('#inputJunior');
 var inputDetails = $('#inputDetails');
+
+var inputPosterName = $('#inputPosterName');
+var inputPosterContact = $('#inputPosterContact');
+
 var postIsProgressing;
 function checkInput() {
 	if (postIsProgressing) {
@@ -42,11 +46,14 @@ function checkInput() {
 
 	if (!__checkIntInput(inputHouseUnitPrice, result, '单价')) return false;
 
-	if (!__checkEmpty(inputHouseTitle, result, '请填写标题')) return false;
+	if (!__checkEmpty(inputHouseTitle, result, '标题')) return false;
 
 	if (!__checkIntInput(inputHouseFloor, result, '层数', false, false, true)) return false;
 
 	if (!__checkIntInput(inputHouseTotalFloor, result, '总层数')) return false;
+	
+	if (!__checkEmpty(inputPosterName, result, '联系人')) return false;
+	if (!__checkEmpty(inputPosterContact, result, '联系方式')) return false;
 
 	// 房屋年份
 	val = Validate.of(inputHouseRightsFrom).val();

@@ -1,5 +1,5 @@
 <!-- Header -->
-<?php $this->load->view('template/template-admin-header'); ?>
+<?php $this->load->view('admin/template/template-admin-header'); ?>
  
 		<title>后台管理系统-管理区域</title>
 
@@ -82,4 +82,4 @@
 	</script>
 
 <!-- Footer -->
-<?php $this->load->view('template/template-admin-footer'); ?>
+<?php $this->load->view('admin/template/template-admin-footer'); ?>

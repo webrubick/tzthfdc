@@ -9,12 +9,9 @@ class user_model extends MY_Model {
 	// 表名
 	const TABLE_NAME = 'tab_user';
 
-    const PK = 'uid';
-
-	protected $INSERT_COLS = array(
-		'user_name', 'true_name', 
-		'password', 'salt', 
-		'sex', 'contact_tel', 'contact_mobile', 'qqchat', 'wechat', 'email', 'address', 'avatar',
+	private $COLS = array(
+		'uid', 'user_name', 'true_name', 'password', 'salt', 'sex',
+		'contact_tel', 'contact_mobile', 'qqchat', 'wechat', 'email', 'address', 'avatar',
 		'permission'
 	);
 	
@@ -23,6 +20,7 @@ class user_model extends MY_Model {
 	}
 
 	public function get_all() {
+		$this->setTable($this::TABLE_NAME);
 		return $this->getData();
 	}
 
@@ -34,7 +32,8 @@ class user_model extends MY_Model {
 	 * @see CI_DB_result::result_array
 	 */
 	public function get_by_id($uid) {
-		return $this->by_pk($uid)->getSingle();	
+		$this->setTable($this::TABLE_NAME);
+		return $this->getSingle(array('uid'=>$uid));	
 	}
 
 	/**
@@ -45,6 +44,7 @@ class user_model extends MY_Model {
 	 * @see CI_DB_result::result_array
 	 */
 	public function get_by_name($user_name) {
+		$this->setTable($this::TABLE_NAME);
 		return $this->getSingle(array('user_name'=>$user_name));	
 	}
 
@@ -56,6 +56,7 @@ class user_model extends MY_Model {
 	 * @see empty(CI_DB_result::result_array)
 	 */
 	public function exist_by_name($user_name) {
+		$this->setTable($this::TABLE_NAME);
 		$result = $this->get_by_name($user_name);
 		return !empty($result);
 	}
@@ -68,7 +69,8 @@ class user_model extends MY_Model {
 	 * @see CI_DB_result::insert  db->insert_id()
 	 */
 	public function add_user($user) {
-		$user = $this->filter_cols($user);
+		$user = array_filter_by_key($user, $this->COLS);
+		$this->setTable($this::TABLE_NAME);
 		$result = $this->addData($user);
 		return isset($result);
 	}
@@ -82,8 +84,9 @@ class user_model extends MY_Model {
 	 * @see CI_DB_query_builder::update
 	 */
 	public function update_by_id($uid, $fields) {
-		$fields = $this->filter_cols($fields);
-		return $this->by_pk($uid)->editData('', $fields);
+		$fields = array_filter_by_key($fields, $this->COLS);
+		$this->setTable($this::TABLE_NAME);
+		return $this->editData(array('uid' => $uid), $fields);
 	}
 
 	/**
@@ -94,7 +97,7 @@ class user_model extends MY_Model {
 	 * @see CI_DB_query_builder::delte
 	 */
 	public function del_by_id($uid) {
-		$result = $this->delData($uid, '', $this::PK);
+		$result = $this->delData($uid, $this::TABLE_NAME, 'uid');
 		return $result === FALSE ? FALSE : TRUE;
 	}
 	
@@ -104,14 +107,17 @@ class user_model extends MY_Model {
 
 
 	public function get_all_but_self($uid) {
-		$this->db->select(array($this::PK, 'user_name', 'true_name', 'permission'));
-		$this->db->where_not_in($this::PK, $uid);
+		$this->setTable($this::TABLE_NAME);
+		$this->db->select(array('uid', 'user_name', 'true_name', 'permission'));
+		$this->db->where_not_in('uid', array($uid));
 		return $this->getData();
 	}
 
 	public function update_permission($uid, $permission) {
 		$fields = array('permission' => $permission);
-		return $this->by_pk($uid)->editData('', $fields);
+		$this->setTable($this::TABLE_NAME);
+		return $this->editData(array('uid' => $uid), $fields);
+
 	}
 }
 

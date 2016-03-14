@@ -1,5 +1,5 @@
 <!-- Header -->
-<?php $this->load->view('template/template-admin-header'); ?>
+<?php $this->load->view('admin/template/template-admin-header'); ?>
  
 		<title>后台管理系统</title>
 
@@ -49,4 +49,4 @@
 	<script type="text/javascript" src="public/scripts/admin/admin.common.js"></script>
 
 <!-- Footer -->
-<?php $this->load->view('template/template-admin-footer'); ?>
+<?php $this->load->view('admin/template/template-admin-footer'); ?>

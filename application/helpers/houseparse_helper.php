@@ -22,8 +22,8 @@ function parse_sell_list_item($CI, $house) {
 
 	$new_house['price'] = parse_get_by_key($CI, $house, 'price');
 
-	$new_house['poster_name'] = parse_get_by_key($CI, $house, 'true_name');
-	$new_house['poster_mobile'] = parse_get_by_key($CI, $house, 'contact_mobile');
+	$new_house['poster_name'] = parse_get_by_key($CI, $house, 'poster_name');
+	$new_house['poster_mobile'] = parse_get_by_key($CI, $house, 'poster_contact');
 	return $new_house;
 }
 
@@ -84,14 +84,22 @@ function parse_sell_house_item($CI, $house) {
 
 	// poster 信息
 	$poster = array();
-	array_merge_by_key($house, $poster, array(
-			'uid',
-			'user_name', 'true_name',
-			'sex',
-			'contact_tel', 'contact_mobile',
-			'qqchat', 'wechat', 'email',
-			'avatar'
-	));
+	if (!empty($house['uid'])) {
+	    $poster['is_realtor'] = TRUE;
+	    array_merge_by_key($house, $poster, array(
+    			'uid',
+    			'user_name', 'true_name',
+    			'sex',
+    			'contact_tel', 'contact_mobile',
+    			'qqchat', 'wechat', 'email',
+    			'avatar'
+    	));
+	} else {
+	    $poster['is_realtor'] = FALSE;
+	}
+	$poster['poster_name'] = parse_get_by_key($CI, $house, 'poster_name');
+	$poster['poster_mobile'] = parse_get_by_key($CI, $house, 'poster_contact');
+	
 	$new_house['poster'] = $poster;
 	return $new_house;
 }
@@ -259,9 +267,9 @@ function parse_rent_list_item($CI, $house) {
 	$new_house['subinfo_house'] = parse_rent_subinfo_house($CI, $house);
 
 	$new_house['price'] = parse_get_by_key($CI, $house, 'price');
-
-	$new_house['poster_name'] = parse_get_by_key($CI, $house, 'true_name');
-	$new_house['poster_mobile'] = parse_get_by_key($CI, $house, 'contact_mobile');
+	
+	$new_house['poster_name'] = parse_get_by_key($CI, $house, 'poster_name');
+	$new_house['poster_mobile'] = parse_get_by_key($CI, $house, 'poster_contact');
 	return $new_house;
 }
 
@@ -351,14 +359,22 @@ function parse_rent_house_item($CI, $house) {
 
 	// poster 信息
 	$poster = array();
-	array_merge_by_key($house, $poster, array(
-			'uid',
-			'user_name', 'true_name',
-			'sex',
-			'contact_tel', 'contact_mobile',
-			'qqchat', 'wechat', 'email',
-			'avatar'
-	));
+	if (!empty($house['uid'])) {
+	    $poster['is_realtor'] = TRUE;
+	    array_merge_by_key($house, $poster, array(
+    			'uid',
+    			'user_name', 'true_name',
+    			'sex',
+    			'contact_tel', 'contact_mobile',
+    			'qqchat', 'wechat', 'email',
+    			'avatar'
+    	));
+	} else {
+	    $poster['is_realtor'] = FALSE;
+	}
+	$poster['poster_name'] = parse_get_by_key($CI, $house, 'poster_name');
+	$poster['poster_mobile'] = parse_get_by_key($CI, $house, 'poster_contact');
+	
 	$new_house['poster'] = $poster;
 	return $new_house;
 }

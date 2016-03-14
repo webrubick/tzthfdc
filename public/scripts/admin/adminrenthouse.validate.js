@@ -13,6 +13,10 @@ var inputHouseTotalFloor = $('#inputHouseTotalFloor');
 var inputDecor = $('#inputDecor');
 
 var inputDetails = $('#inputDetails');
+
+var inputPosterName = $('#inputPosterName');
+var inputPosterContact = $('#inputPosterContact');
+
 var postIsProgressing;
 function checkInput() {
 	if (postIsProgressing) {
@@ -47,7 +51,10 @@ function checkInput() {
 
 	if (!__checkIntInput(inputHousePrice, result, '租金', true, true)) return false;
 
-	if (!__checkEmpty(inputHouseTitle, result, '请填写标题')) return false;
+	if (!__checkEmpty(inputHouseTitle, result, '标题')) return false;
+	
+	if (!__checkEmpty(inputPosterName, result, '联系人')) return false;
+	if (!__checkEmpty(inputPosterContact, result, '联系方式')) return false;
 
 	// 其他信息
 	__checkIfSet(inputDetails, result);

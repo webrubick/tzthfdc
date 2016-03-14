@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `db_tzthfdc`.`Tab_RentHouse` (
   `details` TEXT NULL COMMENT '详情',
   `create_time` DATETIME NULL,
   `update_time` DATETIME NULL,
-  `uid` INT NOT NULL,
+  `uid` INT NULL,
   `poster_name` VARCHAR(45) NULL COMMENT '联系人名称',
   `poster_contact` VARCHAR(50) NULL COMMENT '联系人联系号码',
   PRIMARY KEY (`hid`))

@@ -1,5 +1,5 @@
 <!-- Header -->
-<?php $this->load->view('template/template-admin-header'); ?>
+<?php $this->load->view('admin/template/template-admin-header'); ?>
  
 
 
@@ -43,4 +43,4 @@
 	</script>
 
 <!-- Footer -->
-<?php $this->load->view('template/template-admin-footer'); ?>
+<?php $this->load->view('admin/template/template-admin-footer'); ?>

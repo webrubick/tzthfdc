@@ -466,3 +466,7 @@ body.menu {
   color: #000;
 }
 
+tr.house-poster {
+    display: none;
+}
+
