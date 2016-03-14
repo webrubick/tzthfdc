@@ -13,6 +13,8 @@ class MY_Model extends CI_Model {
 		parent::__construct();
 		// 需要base url
         $this->load->database();
+        // 初始化设置表名
+        $this->setTable($this::TABLE_NAME);
 	}
 
 	// 这应该是类似埋点的东东吧，记录点东西
@@ -88,8 +90,9 @@ class MY_Model extends CI_Model {
         }
     }
 
-    public function getPrimaryName($table)
+    public function getPrimaryName($table = '')
     {
+        $table = $table == '' ? $this->table : $table;
         $this->db->select("COLUMN_NAME");
         $this->db->where("TABLE_NAME", $table);
         $this->db->where("CONSTRAINT_NAME", 'PRIMARY');
@@ -227,6 +230,26 @@ class MY_Model extends CI_Model {
             }
         }
         return $return;
+    }
+    
+    
+    
+    /**
+     * 
+     * param pk_val 主键的值
+     * 
+     * return this model object
+     */
+    public function by_pk($pk_val) {
+        $this->setWhere(array($this::PK => $pk_val));
+        return $this;
+    }
+    
+    /**
+     * 过滤数据库的字段
+     */
+    public function filter_cols($data) {
+        return array_filter_by_key($data, $this->INSERT_COLS);
     }
 	
 }

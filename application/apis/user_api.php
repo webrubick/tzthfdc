@@ -38,23 +38,27 @@ class user_api extends API {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('user_model');
 	}
 
 	/**
 	 * 用户登录
+	 * 
+	 * 必要参数 user_name, password
 	 */
-	public function login($user_name, $user_pass) {
-		if (!isset($user_name)) { return $this->ex(90001); }
-		if (!isset($user_pass)) { return $this->ex(90002); }
-
+	public function login($data) {
+	    $code = $this->check_base(array('user_name' => 90001, 'password' => 90002), $data);
+	    if ($code !== 0) { return $this->ex($code); }
+	    
+	    $user_name = $data['user_name']; $user_pass = $data['password'];
+	    
+		$this->load->model('user_model');
 		$query_user = $this->user_model->get_by_name($user_name);
 		if (empty($query_user)) { return $this->ex(90003); }
 
 		if (md5pass($user_pass, $query_user['salt']) != $query_user['password']) {
 			return $this->ex(90004);
 		} else {
-			return $this->ok(prepare_user_info($query_user));
+			return $this->ok($this->filter_userinfo($query_user));
 		}
 	}
 
@@ -62,14 +66,16 @@ class user_api extends API {
 	 * 用户注册
 	 */
 	public function register($user) {
-		if (!isset($user) || empty($user)) { return $this->ex(90101); }
-		if (!isset($user['user_name']) || empty($user['user_name'])) { return $this->ex(90001); }
-		if (!isset($user['password']) || empty($user['password'])) { return $this->ex(90002); }
+	    $code = $this->check_base(array('user_name' => 90001, 'password' => 90002), $user);
+	    if ($code !== 0) { return $this->ex($code); }
+		
+	    $user_name = $user['user_name']; $user_pass = $user['password'];
+	    
+		$this->load->model('user_model');
 		// check exist
 		// 检测用户名有没有注册过
-		if ($this->user_model->exist_by_name($user['user_name'])) { return $this->ex(90102); }
+		if ($this->user_model->exist_by_name($user_name)) { return $this->ex(90102); }
 		
-		$user_pass = $user['password'];
 		$parsed_user = array_merge($user, $this->generate_user_pass($user_pass));
 		log_message('info', 'register user_pass = '.$parsed_user['password']);
 		// do set new user
@@ -79,7 +85,7 @@ class user_api extends API {
 			return $this->ex(90103);
 		}
 		// 如果成功返回login数据
-		return $this->login($parsed_user['user_name'], $user_pass);
+		return $this->login($user);
 	}
 
 
@@ -92,52 +98,56 @@ class user_api extends API {
 	 *
 	 * @param	string	$user_pass 用户修改后的密码
 	 * @param	mixed	$user 当前用户信息
+	 * 
+	 * return data 为更新后的密码信息
 	 */
-	public function change_pass($user_pass) {
-		if (!is_login()) { return $this->un_login(); }
-		if (!isset($user_pass) || empty($user_pass)) { return $this->ex(90002); }
-		$uid = get_session_uid();
-
+	public function change_pass($data) {
+	    $code = $this->check_base(array('uid' => 90000, 'password' => 90002), $data);
+	    if ($code !== 0) { return $this->ex($code); }
+	    
+	    $uid = $data['uid']; $user_pass = $data['password'];
+	    
 		$update_pair = $this->generate_user_pass($user_pass);
 		log_message('error', 'change_pass update_pair = '.json_encode($update_pair));
 		// 尝试更新数据库
+		$this->load->model('user_model');
 		$update_result = $this->user_model->update_by_id($uid, $update_pair);
 		if (!$update_result) {
 			log_message('error', 'change_pass db failed');
 			return $this->ex(90201);
 		}
 
-		$user_after_update = array_merge($this->sessionaccess->get_user_info(), $update_pair);
 		log_message('error', 'change_pass user_after_update = '.json_encode($update_pair));
-		return $this->ok(prepare_user_info($user_after_update));
+		return $this->ok();
 	}
 
 
 	// *************************************
 	// 修改个人信息
 	// *************************************
-	public function update_info($update_pair) {
-		if (!is_login()) {
-			return $this->un_login();
-		}
+	public function update_info($data) {
+	    $code = $this->check_base(array('uid' => 90000), $data);
+	    if ($code !== 0) { return $this->ex($code); }
+	    
+	    $update_pair = $data;
 		if (!isset($update_pair) || !is_array($update_pair)) {
 			return $this->ok();
 		}
 		// 更新数据库
-		$uid = get_session_uid();
-		$update_result = $this->user_model->update_by_id($uid, $update_pair);
+		$update_result = $this->user_model->update_by_id($data['uid'], $update_pair);
 		if (!$update_result) {
 			log_message('error', 'update_info db failed');
 			return $this->ex(90301);
 		} else {
-			return $this->ok(prepare_user_info($this->user_model->get_by_id($uid)));
+			return $this->ok($this->filter_userinfo($this->user_model->get_by_id($uid)));
 		}
 	}
 
-	public function update_avatar() {
-		if (!is_login()) { return $this->un_login(); }
+	public function update_avatar($data) {
+	    $code = $this->check_base(array('uid' => 90000), $data);
+	    if ($code !== 0) { return $this->ex($code); }
 
-		$uid = get_session_uid();
+		$uid = $data['uid'];
 
 		$this->load->helper('upload');
 		$save_result = save_avatar($this, $uid);
@@ -152,8 +162,7 @@ class user_api extends API {
 				return $this->ex(90303);
 			} else {
 				delete_old_avatar($this, $avatar); // 删除老的头像文件
-				set_user_field('avatar', $avatar); // 更新session
-				return $this->ok($avatar);
+				return $this->ok(array('avatar' => $avatar));
 			}
 		} else {
 			return $this->ex(90302);
@@ -162,9 +171,6 @@ class user_api extends API {
 
 
 	public function del_user($uid) {
-		if (!is_login()) {
-			return $this->un_login();
-		}
 		if (!isset($uid)) {
 			return $this->ex(90401);
 		}
@@ -180,8 +186,7 @@ class user_api extends API {
 	/**
 	 * 注销
 	 */
-	public function logout() {
-		clear_login();
+	public function logout($data) {
 		return $this->ok();
 	}
 
@@ -197,6 +202,21 @@ class user_api extends API {
 			'salt' => $salt
 		);
 	}
+	
+	private function filter_userinfo($user) {
+	    $filter_keys = array(
+	        'uid',
+			'user_name', 'true_name',
+			'sex',
+			'contact_tel', 'contact_mobile',
+			'qqchat', 'wechat', 'email',
+			'avatar', 
+			'gid',
+			'permission'    
+	    );
+	    
+	    return array_filter_by_key($user, $filter_keys);
+	}
 
 
 
@@ -204,9 +224,6 @@ class user_api extends API {
 	// 授权
 	// *************************************
 	public function get_all_user_by_super($uid) {
-		if (!is_login()) {
-			return $this->un_login();
-		}
 		if (!isset($uid)) {
 			return $this->ex(90502);
 		}
@@ -215,9 +232,6 @@ class user_api extends API {
 	}
 
 	public function grant($uid, $permission) {
-		if (!is_login()) {
-			return $this->un_login();
-		}
 		if (!isset($uid) || !isset($permission)) {
 			return $this->ex(90503);
 		}
@@ -228,7 +242,6 @@ class user_api extends API {
 		} else {
 			return $this->ok();
 		}
-
 	}
 }
 

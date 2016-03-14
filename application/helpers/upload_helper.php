@@ -7,7 +7,7 @@ function common_check_upload_input($CI) {
 	if (isset($headers)) {
 		$keys = array('X_FILENAME', 'X-FILENAME'); // IIS 会将头部改成第二个
 		foreach ($headers as $key => $value) {
-			if (array_search(strtoupper($key), $keys)) {
+			if (array_search(strtoupper($key), $keys) !== FALSE) {
 				$fn = $value;
 				break;
 			}

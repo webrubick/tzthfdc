@@ -119,7 +119,7 @@ var ZXXFILE = {
 		
 					// 开始上传
 					xhr.open("POST", self.url, true);
-					xhr.setRequestHeader("X_FILENAME", file.name);
+					xhr.setRequestHeader("X_FILENAME", $.urlencode(file.name));
 					xhr.send(file);
 				}	
 			})(file);	

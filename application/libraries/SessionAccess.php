@@ -30,6 +30,11 @@ function set_user_field($key, $val = NULL) {
 	$CI->sessionaccess->set_field($key, $val);
 }
 
+function update_raw_user_info($user) {
+	$CI =& get_instance();
+	$CI->sessionaccess->set_user_info($user);
+}
+
 function get_user_field($key) {
 	$CI =& get_instance();
 	return $CI->sessionaccess->get_field($key);

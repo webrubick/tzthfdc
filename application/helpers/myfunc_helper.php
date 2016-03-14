@@ -1,5 +1,5 @@
 <?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 // 对密码加密
 function md5pass($pass, $salt){
@@ -17,7 +17,7 @@ function ishow_404($message=NULL, $page = '', $log_error = TRUE) {
 		}
 		$_error =& load_class('Exceptions', 'core');
 		echo $_error->show_error($heading, $message, 'error_404', 404);
-		exit(4); // EXIT_UNKNOWN_FILE
+		exit(EXIT_UNKNOWN_FILE); // EXIT_UNKNOWN_FILE
 	} else {
 		show_404($page, $log_error);
 	}
@@ -70,6 +70,18 @@ function array_merge_by_key($src, &$target, $filter_keys) {
 		}
 		$target[$key] = $value;
 	}
+}
+
+function array_merge_y($array1, $array2) {
+    if (!isset($array1)) {
+        $array1 = array();
+    }
+    if (!empty($array2)) {
+        foreach ($array2 as $key => $value) {
+            $array1[$key] = $value;
+        }
+    }
+    return $array1;
 }
 
 ?>

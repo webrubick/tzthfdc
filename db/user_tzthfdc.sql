@@ -21,3 +21,92 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
+
+
+
+
+
+
+
+
+
+-- insert data
+-- -----------------------------------------------------
+-- Table `db_tzthfdc`.`Tab_UserGroup` data
+-- -----------------------------------------------------
+INSERT INTO `db_tzthfdc`.`Tab_UserGroup`(`group_name`, `level`) VALUES ('超级管理员', 10000);
+INSERT INTO `db_tzthfdc`.`Tab_UserGroup`(`group_name`, `level`) VALUES ('老板', 9999);
+INSERT INTO `db_tzthfdc`.`Tab_UserGroup`(`group_name`, `level`) VALUES ('经纪人', 1);
+INSERT INTO `db_tzthfdc`.`Tab_UserGroup`(`group_name`, `level`) VALUES ('个人', 0);
+
+
+-- -----------------------------------------------------
+-- Table `db_tzthfdc`.`Tab_User` data yytest
+-- -----------------------------------------------------
+-- !+=|-_/';'.system@#$%^&*()19900615
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('admin', 'YY', 'f853db4d7e78a7dfc8fcd708ec305c7e', '15221543209', '574879667', 'yy15151877621@126.com', 'lQwdhO', '1', '1');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('yy', 'YY', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '1');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('yyyy', 'YY1', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '0');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`) VALUES ('yunr', 'YY2', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '0');
+
+
+-- -----------------------------------------------------
+-- Table `db_tzthfdc`.`Tab_UserGroup_has_Tab_User` data
+-- -----------------------------------------------------
+INSERT INTO `db_tzthfdc`.`Tab_UserGroup_has_Tab_User`(`gid`, `uid`) VALUES (1, 1);
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `db_tzthfdc`.`Tab_Area` data
+-- -----------------------------------------------------
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('市区');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('城中');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('城东');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('城南');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('城西');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('城北');
+INSERT INTO `db_tzthfdc`.`Tab_Area`(`area_name`) VALUES ('其他地区');
+
+
+
+
+-- -----------------------------------------------------
+-- Table `db_tzthfdc`.`Tab_Community` data
+-- -----------------------------------------------------
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('美好上郡', 'mhsj');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('碧桂园', 'bgy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('永兴花园', 'yxhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('祥云花园', 'xyhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('宏基花园', 'hjhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('华辰尊园', 'hczy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('莲花六区', 'lhlq');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('莲花五区', 'lhwq');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('水岸豪庭', 'saht');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('东河阳光', 'dhyg');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('阳光新城', 'ygxc');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('稻河湾', 'dhw');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('森园小区', 'syxq');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('玉堂花园', 'ythy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('鹏欣丽都', 'pxld');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('教工三村', 'jgsc');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('财富广场', 'cfgc');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('五一路', 'wyl');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('工人新村', 'grxc');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('福寿苑', 'fsy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('怡和花园', 'yhhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('新世界花园', 'xsjhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('宫涵花园', 'ghhy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('供电新苑', 'gdxy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('西域绿洲', 'xylz');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('盛塘花苑', 'sthy');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('金水湾', 'jsw');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('莲花八区', 'lhbq');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('坡子街', 'pzj');
+INSERT INTO `db_tzthfdc`.`Tab_Community`(`cname`, `pinyin`) VALUES ('凤城国际', 'fhfj');
+

@@ -50,7 +50,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
-$route['(.+)'] = 'welcome/redirect';
+// $route['(.+)'] = 'welcome/redirect';
+
+
+
+$route['admin/(:any)/(:any)'] = 'admin/$1_$2';
+$route['adminuser/(:any)/(:any)'] = 'adminuser/$1_$2';
+$route['adminhouse/(:any)/(:any)'] = 'adminhouse/$1_$2';
+$route['admincommon/(:any)/(:any)'] = 'admincommon/$1_$2';
+$route['admincommon/(:any)/(:any)/(:any)'] = 'admincommon/$1_$2_$3';
 
 
 
