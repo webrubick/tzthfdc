@@ -2,23 +2,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * 出售房源的model
+ * 出租房源的model
  */
-class sellhouse_model extends MY_Model {
+class Renthouse_model extends MY_Model {
 	
 	// 表名
-	const TABLE_NAME = 'tab_sellhouse';
+	const TABLE_NAME = 'tab_renthouse';
 
 	private $COLS = array(
 		'hid',
 		'community', 'cid', 'aid', 
 		'rooms', 'halls', 'bathrooms', 'size',
-		'price', 'unit_price',
+		'price',
 		'title',
+		'rent_type', 'rentpay_type',
 		'floors', 'floors_total', 
-		'rights_len', 'rights_type', 'rights_from', 
 		'house_type', 'decor', 'orientation',
-		'primary_school', 'junior_school', 
 		'images', 'details',
 		'uid', 
 		'poster_name', 'poster_contact'
@@ -27,12 +26,11 @@ class sellhouse_model extends MY_Model {
 	private $INSERT_COLS = array(
 		'community', 'cid', 'aid', 
 		'rooms', 'halls', 'bathrooms', 'size',
-		'price', 'unit_price',
+		'price',
 		'title',
+		'rent_type', 'rentpay_type',
 		'floors', 'floors_total', 
-		'rights_len', 'rights_type', 'rights_from', 
 		'house_type', 'decor', 'orientation',
-		'primary_school', 'junior_school', 
 		'images', 'details',
 		'uid', 
 		'poster_name', 'poster_contact'
@@ -70,9 +68,9 @@ class sellhouse_model extends MY_Model {
 		$sub_where = to_where_by_raw_conditions($this, $conditions); //to_where_str($this, $conditions)
 		if (isset($kw) && !empty($kw)) {
 			$kw = $this->db->escape_like_str($kw);
-			$sub_sql = "select * from tab_sellhouse where {$sub_where} and (title like '%{$kw}%' or community like '%{$kw}%') order by update_time desc limit {$offset},{$page_size}";
+			$sub_sql = "select * from tab_renthouse where {$sub_where} and (title like '%{$kw}%' or community like '%{$kw}%') order by update_time desc limit {$offset},{$page_size}";
 		} else {
-			$sub_sql = "select * from tab_sellhouse where {$sub_where} order by update_time desc limit {$offset},{$page_size}";
+			$sub_sql = "select * from tab_renthouse where {$sub_where} order by update_time desc limit {$offset},{$page_size}";
 		}
 		$select = to_select_str($this, array('*'), 'h.') ;
 		$sql = "select {$select} from ({$sub_sql}) h;";
@@ -88,7 +86,7 @@ class sellhouse_model extends MY_Model {
 
 	public function get_single_by_hid($hid) {
 	    $this->load->helper('housesql');
-		$sub_sql = "select * from tab_sellhouse where hid = ". $hid;
+		$sub_sql = "select * from tab_renthouse where hid = ". $hid;
 // 		$sql = "select h.*, u.* from ({$sub_sql}) h, tab_user u where h.uid = u.uid;";
         $select = 'h.*, '.
             to_select_str($this, array(
@@ -115,6 +113,7 @@ class sellhouse_model extends MY_Model {
 			$kw = $this->db->escape_like_str($kw);
 			$this->db->or_like(array('title' => $kw));
 			$this->db->or_like(array('community' => $kw));
+			$this->db->or_like(array('details' => $kw));
 			return $this->getOrderedData();
 		}
 		return $this->get_all();
@@ -143,6 +142,7 @@ class sellhouse_model extends MY_Model {
 			        ->group_start()
 			            ->or_like('title', $kw)
 			            ->or_like('community', $kw)
+			            ->or_like('details', $kw)
 		        	->group_end();
 			return $this->getOrderedData();
 		}
@@ -172,10 +172,15 @@ class sellhouse_model extends MY_Model {
 		return $result === FALSE ? FALSE : TRUE;
 	}
 	
+	private function set_common_order() {
+		$this->db->order_by('update_time', 'DESC');
+	}
+	
 	private function getOrderedData($where = NULL) {
 		$this->db->order_by('update_time', 'DESC');
 		return $this->getData($where);
 	}
+	
 }
 
 ?>

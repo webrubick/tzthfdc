@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // 快捷的判断是否已经登录
@@ -56,7 +55,7 @@ function prepare_user_info($query_user) {
 /**
  * User login Session access manager
  */
-class sessionaccess {
+class Sessionaccess {
 	// 一般用户登录状态中都要含有一些公共信息
 	const COOKIE_EXPIRE = 86500;
 	

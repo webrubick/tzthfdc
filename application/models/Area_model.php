@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 区域
  */
-class area_model extends MY_Model {
+class Area_model extends MY_Model {
 	
 	// 表名
 	const TABLE_NAME = 'tab_area';

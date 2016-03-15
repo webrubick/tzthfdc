@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // 管理用户
-class adminuser extends MY_Controller {
+class Adminuser extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();

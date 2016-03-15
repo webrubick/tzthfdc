@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 用户相关的API，包括登录，注册，修改密码，修改信息；
  */
-class user_model extends MY_Model {
+class User_model extends MY_Model {
 	
 	// 表名
 	const TABLE_NAME = 'tab_user';
@@ -105,7 +105,7 @@ class user_model extends MY_Model {
 
 
 
-
+    
 	public function get_all_but_self($uid) {
 		$this->setTable($this::TABLE_NAME);
 		$this->db->select(array('uid', 'user_name', 'true_name', 'permission'));

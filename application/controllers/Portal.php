@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class portal extends MY_Controller {
+class Portal extends MY_Controller {
 	
 	public function __construct() {
 		parent::__construct();

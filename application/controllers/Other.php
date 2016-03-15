@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * 个人房源可以认为是临时用户
  * 
  */
-class other extends MY_Controller {
+class Other extends MY_Controller {
 	
 	public function __construct() {
 		parent::__construct();

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class admin extends MY_Controller {
+class Admin extends MY_Controller {
 	
 	// 后台的管理登录界面
 	const ADMIN_LOGIN = 'admin/user/login';
@@ -12,8 +12,7 @@ class admin extends MY_Controller {
 	}
 	
 	// 显示管理当前用户所属组能够操作的管理后台界面
-	public function index()
-	{
+	public function index() {
 		$this->check_state_common('GET', TRUE);
 		// 如果已经登录，则显示当前用户能够看到的管理界面
 		$this->load->view('admin/index', $this);

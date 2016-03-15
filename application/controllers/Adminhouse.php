@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // 管理用户的房源
-class adminhouse extends MY_Controller {
+class Adminhouse extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();

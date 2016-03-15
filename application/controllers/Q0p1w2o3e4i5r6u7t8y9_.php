@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class q0p1w2o3e4i5r6u7t8y9_ extends CI_Controller {
+class Q0p1w2o3e4i5r6u7t8y9_ extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.

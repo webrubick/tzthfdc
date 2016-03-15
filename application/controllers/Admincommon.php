@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class admincommon extends MY_Controller {
+class Admincommon extends MY_Controller {
 	
 	// 后台的管理登录界面
 	const ADMIN_LOGIN = 'admin/user/login';

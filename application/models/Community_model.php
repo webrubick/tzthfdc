@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 小区
  */
-class community_model extends MY_Model {
+class Community_model extends MY_Model {
 	
 	// 表名
 	const TABLE_NAME = 'tab_community';
