@@ -11,8 +11,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- user user_tzthfdc
 -- -----------------------------------------------------
 DROP USER IF EXISTS `user_tzthfdc`@`localhost`;
-CREATE USER `user_tzthfdc`@`localhost` IDENTIFIED by 'yytest';
-GRANT all privileges ON `db_tzthfdc`.* TO `user_tzthfdc`@`localhost`;
+DROP USER IF EXISTS `user_tzthfdc`@`%`;
+CREATE USER `user_tzthfdc`@`%` IDENTIFIED by 'yytest';
+GRANT all privileges ON `db_tzthfdc`.* TO `user_tzthfdc`@`%`;
 
 FLUSH privileges;
 
