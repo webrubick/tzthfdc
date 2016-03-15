@@ -228,7 +228,7 @@
 								<?php if ($editMode && isset($house['price']) && !empty($house['price'])) : ?>
 								<input type="text" name="price" id="inputHousePrice" class="house-related-short" tabindex="<?php echo $tabIndex++; ?>" value="<?php print_r($house['price']); ?>">
 								<?php else : ?>
-								<input type="text" name="price" id="inputHousePrice" class="house-related-short" tabindex="<?php echo $tabIndex++; ?>" value="面议">
+								<input type="text" name="price" id="inputHousePrice" class="house-related-short" tabindex="<?php echo $tabIndex++; ?>" >
 								<?php endif; ?>
 								<span>元/月(<small>*整数</small>)</span>
 							</div>

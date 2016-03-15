@@ -93,6 +93,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 
+defined('WEBSITE_REG_CODE')      OR define('WEBSITE_REG_CODE', '!@#qwe$%^asd&*(zxc)_+rty123fgh456vbn789uio0-=');
+
 defined('WEBSITE_NAME')      OR define('WEBSITE_NAME', '天和房地产');
 defined('WEBSITE_C_YEAR')      OR define('WEBSITE_C_YEAR', date("Y"));
 defined('WEBSITE_CONTACT')      OR define('WEBSITE_CONTACT', '0000');

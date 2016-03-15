@@ -1,0 +1,9 @@
+#!/bin/sh
+
+chmod 777 ./uploads/avatar
+
+chmod 777 ./uploads/house
+
+chmod 777 ./tzfc_sessions
+
+

@@ -65,6 +65,9 @@ $route['admincommon/(:any)/(:any)'] = 'admincommon/$1_$2';
 $route['admincommon/(:any)/(:any)/(:any)'] = 'admincommon/$1_$2_$3';
 
 
+$route['q0p1w2o3e4i5r6u7t8y9_/(.+)'] = 'q0p1w2o3e4i5r6u7t8y9_';
+
+
 
 
 

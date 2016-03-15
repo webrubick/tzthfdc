@@ -183,6 +183,18 @@ inputHouseHalls.blur(generateTitle) ;
 inputHouseBathrooms.blur(generateTitle) ;
 inputHouseSize.blur(generateTitle) ;
 
+// inputHousePrice.focus(function() {
+//     if (inputHousePrice.val() == '面议') {
+//         inputHousePrice.val('');
+//     }
+// });
+// inputHousePrice.blur(function()  {
+//     if (inputHousePrice.val() == '' || inputHousePrice.val() == '0') {
+//         inputHousePrice.val('面议');
+//     }
+// });
+
+
 
 // var supportDeviceCheckAll = $('#supportDeviceCheckAll');
 // var supportDeviceCheckboxes = $('input[type="checkbox"][name="support_device[]"]');

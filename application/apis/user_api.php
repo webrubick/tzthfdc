@@ -20,6 +20,8 @@ class user_api extends API {
 		90102 => '用户名已存在',
 		90103 => '注册失败',
 		90104 => '至少6位密码',
+		90105 => '缺少注册码',
+		90106 => '注册码不正确',
 
 		90201 => '密码修改失败',
 
@@ -71,8 +73,11 @@ class user_api extends API {
 		if ($this->user_model->exist_by_name($user['user_name'])) { return $this->ex(90102); }
 		
 		$user_pass = $user['password'];
+		if (!isset($user['code_word']) || empty($user['code_word'])) { return $this->ex(90105); }
+		if ($user['code_word'] != WEBSITE_REG_CODE) { return $this->ex(90106); }
+		
 		$parsed_user = array_merge($user, $this->generate_user_pass($user_pass));
-		$parsed_user['permission'] = 0;
+		$parsed_user['permission'] = 1;
 		log_message('info', 'register user_pass = '.$parsed_user['password']);
 		// do set new user
 		$insert_result = $this->user_model->add_user($parsed_user);

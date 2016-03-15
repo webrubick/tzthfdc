@@ -8,7 +8,7 @@ class test extends MY_Controller {
 	}
 	
 	public function index() {
-	    
+	    print_r(is_int('0.'));
 	    
 	}
 	

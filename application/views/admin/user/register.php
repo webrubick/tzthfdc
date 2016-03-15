@@ -69,6 +69,15 @@
 							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码">
 						</td>
 					</tr>
+					
+					<tr class="danger">
+						<td>
+							<label for="inputCodeWord">注册码</label>
+						</td>
+						<td>
+							<input type="text" name="code_word" id="inputCodeWord" class="form-control" placeholder="注册码" >
+						</td>
+					</tr>
 
 					<tr class="danger">
 						<td>

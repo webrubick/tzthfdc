@@ -7,6 +7,9 @@ var sex = $('input[name="inputSex"]');
 var contact_mobile = $("#inputMobile");
 var qqchat = $("#inputQQ");
 var email = $("#inputEmail");
+var code_word = $("#inputCodeWord");
+
+
 var postIsProgressing;
 function commonSignValidate(postUrl) {
 	if (postIsProgressing) {
@@ -47,6 +50,17 @@ function commonSignValidate(postUrl) {
 			return false;
 		}
 	}
+	
+	if (code_word && code_word.length > 0) {
+	    var val = $.trim(code_word.val());
+		if (val == "") {
+			showToast("请输入注册码");
+			code_word.focus();
+			return false;
+		}
+		result += "&code_word=" + $.urlencode(val);
+	}
+	
 	if (true_name && true_name.length > 0) {
 		var val = $.trim(true_name.val());
 		if (val == "") {
@@ -104,7 +118,6 @@ function commonSignValidate(postUrl) {
 	if (result.indexOf('&') == 0) {
 		result = result.substr(1);
 	}
-	console.log(result);
 
 	var postData = result;
 

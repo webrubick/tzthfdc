@@ -28,6 +28,8 @@ class adminrenthouse_api extends API {
 		11015 => '房源图片保存失败',
 		11016 => '联系人为空',
 		11017 => '联系方式为空',
+		
+		11100 => '',
 	);
 
 	public function __construct() {
@@ -130,7 +132,7 @@ class adminrenthouse_api extends API {
 		if (!isset($house['size'])) {
 			return 11004;
 		}
-		if (!isset($house['price']) && !isset($house['is_undefined'])) {
+		if (!isset($house['price'])) {
 			return 11005;
 		}
 		if (!isset($house['rent_type'])) {
@@ -147,8 +149,7 @@ class adminrenthouse_api extends API {
 		}
 		return 200;
 	}
-
-
+	
 	public function update_rent_image($uid, $hid) {
 		if (!is_login()) { return $this->un_login(); }
 
