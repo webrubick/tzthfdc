@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 房源相关的API
  */
-class adminsellhouse_api extends API {
+class Adminsellhouse_api extends API {
 
 	protected $apicode = array(
 		10001 => '未选择小区',

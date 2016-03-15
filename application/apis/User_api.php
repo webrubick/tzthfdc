@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 用户相关的API，包括登录，注册，修改密码，修改信息；
  */
-class user_api extends API {
+class User_api extends API {
 	
 	protected $apicode = array(
 

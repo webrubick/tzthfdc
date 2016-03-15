@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 公共信息相关的API
  */
-class admincommon_api extends API {
+class Admincommon_api extends API {
 
 	protected $apicode = array(
 		80001 => '请输入小区名',
