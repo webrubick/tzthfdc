@@ -27,7 +27,9 @@
     <section>
 		<div class="sub-container fixed-sub-container">
     		<div id="house-container">
-    			<h3>房源管理 <small>添加出售房源</small></h3>
+    		    <a href="/" style="text-decoration: underline;">&lt;&lt; 返回首页</a>
+    		    
+    		    <h3>添加出售房源</h3>
     
     			<?php $this->load->view('admin/house/editor-sell'); ?>
     

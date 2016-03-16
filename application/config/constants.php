@@ -95,9 +95,13 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 defined('WEBSITE_REG_CODE')      OR define('WEBSITE_REG_CODE', '!@#qwe$%^asd&*(zxc)_+rty123fgh456vbn789uio0-=');
 
-defined('WEBSITE_NAME')      OR define('WEBSITE_NAME', '天和房地产');
+defined('WEBSITE_NAME')      OR define('WEBSITE_NAME', '泰州天和房地产');
 defined('WEBSITE_C_YEAR')      OR define('WEBSITE_C_YEAR', date("Y"));
-defined('WEBSITE_CONTACT')      OR define('WEBSITE_CONTACT', '0000');
+defined('WEBSITE_CONTACT')      OR define('WEBSITE_CONTACT', '0523-82182606/82182707');
+defined('WEBSITE_COM_ADDRESS')      OR define('WEBSITE_COM_ADDRESS', '泰州市海陵区育才路万泰国际花园47#104室天和房产');
+defined('WEBSITE_KEYWORD')      OR define('WEBSITE_KEYWORD', '泰州房产,泰州租房,泰州二手房,泰州房产信息,泰州房产网,泰州二手房网,泰州租房网,泰州房产信息网,泰州房产中介,泰州天和房产,泰州天和房地产,天和房地产,泰州贷款');
+
+
 defined('PASS_MIN_LEN')      OR define('PASS_MIN_LEN', 6);
 
 defined('HOUSE_CAT_SELL')      OR define('HOUSE_CAT_SELL', 0);
