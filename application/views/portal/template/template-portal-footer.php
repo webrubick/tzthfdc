@@ -4,6 +4,12 @@
     	<div>
     		<span class=“copyright”>© <?php print_r(WEBSITE_C_YEAR); ?> <?php echo WEBSITE_NAME; ?></span>
     	</div>
+    	<div>
+    		<span>联系方式： <?php echo WEBSITE_CONTACT; ?></span>
+    	</div>
+    	<div>
+    		<span>联系地址： <?php echo WEBSITE_COM_ADDRESS; ?></span>
+    	</div>
     </footer>
     
     <style>
@@ -49,7 +55,7 @@
         <h4>
             二维码扫描
         </h4>
-        <img src="public/img/portal/qr.png" style="width: 120px"/>
+        <img src="public/img/portal/qr.jpg" style="width: 120px"/>
         <p>
             微信联系人
         </p>

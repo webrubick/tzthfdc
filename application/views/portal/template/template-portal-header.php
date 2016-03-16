@@ -8,6 +8,8 @@
 	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 	    <meta name="Author" content="YY" />
 	    <meta name="Copyright" content="YY" />
+	    <?php echo meta('keywords', WEBSITE_KEYWORD); ?>
+	    <?php echo meta('description', WEBSITE_KEYWORD); ?>
 	    <link rel="shortcut icon" href="public/favicon.ico">
 	    <title><?php echo WEBSITE_NAME; ?></title>
 
@@ -41,8 +43,9 @@
 
 		<header id="logo-header" class="sub-container">
 			<div id="top-nav" class="fixed-sub-container">
-				<span class="city-logo">泰州</span>
-				<img class="primary-logo-img" src="public/img/portal/logo.png" />
+				<span class="city-logo"></span>
+				<img class="logo-img" src="public/img/portal/thfdc-ico.png" />
+				<img class="primary-logo-img" src="public/img/portal/logo-2.png" />
 			</div>
 		</header>
 
