@@ -30,6 +30,16 @@
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 		<script type="text/javascript" src="public/scripts/admin/admin.common.js"></script>
+		
+		<script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?464dce96a743a4307ffef3c5302acf6c";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
 	</head>
 	<body>
 		<header class="welcome">
