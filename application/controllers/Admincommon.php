@@ -8,6 +8,7 @@ class Admincommon extends MY_Controller {
 	
 	public function __construct() {
 		parent::__construct();
+		$this->load_sessionaccess();
 	}
 	
 	// 进入管理小区的界面
