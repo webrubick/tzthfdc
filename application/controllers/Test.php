@@ -8,7 +8,13 @@ class Test extends MY_Controller {
 	}
 	
 	public function index() {
-	    print_r(is_int('0.'));
+	    echo json_encode(array(
+	        'code' => 200,
+	        'msg' => 'OK',
+	        'data' => array(
+	                'url' => 'http://www.baidu.com'
+	            ),
+	        ));
 	    
 	}
 	
