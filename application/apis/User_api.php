@@ -36,6 +36,8 @@ class User_api extends API {
 		90502 => '授权信息更新失败',
 		90503 => '授权参数缺失',
 
+        90601 => '验证码为空',
+        90602 => '验证码错误',
 	);
 
 	public function __construct() {
@@ -55,6 +57,26 @@ class User_api extends API {
 		if (empty($query_user)) { return $this->ex(90003); }
 
 		if (md5pass($user_pass, $query_user['salt']) != $query_user['password']) {
+			return $this->ex(90004);
+		} else {
+			return $this->ok(prepare_user_info($query_user));
+		}
+	}
+	
+	public function login_personal($user_name, $user_pass, $code) {
+	    if (!isset($user_name)) { return $this->ex(90001); }
+		if (!isset($user_pass)) { return $this->ex(90002); }
+		if (!isset($code)) { return $this->ex(90601); }
+		
+		$login_vercode = get_user_field('login_vercode');
+		if ($code != $login_vercode) {
+		    return $this->ex(90602);
+		}
+        $query_user = $this->user_model->get_by_persion_name($user_name);
+        if (empty($query_user)) {
+            return $this->ex(90003);
+        }
+        if (md5pass($user_pass, $query_user['salt']) != $query_user['password']) {
 			return $this->ex(90004);
 		} else {
 			return $this->ok(prepare_user_info($query_user));
@@ -89,6 +111,38 @@ class User_api extends API {
 		return $this->login($parsed_user['user_name'], $user_pass);
 	}
 
+	/**
+	 * 用户注册
+	 */
+	public function register_persional($user) {
+		if (!isset($user) || empty($user)) { return $this->ex(90101); }
+		if (!isset($user['user_name']) || empty($user['user_name'])) { return $this->ex(90001); }
+		if (!isset($user['password']) || empty($user['password'])) { return $this->ex(90002); }
+		if (!isset($user['code']) || empty($user['code'])) { return $this->ex(90601); }
+		
+		$register_vercode = get_user_field('register_vercode');
+		if ($user['code'] != $register_vercode) {
+		    return $this->ex(90602);
+		}
+		
+		// check exist
+		// 检测用户名有没有注册过
+		if ($this->user_model->exist_by_name($user['user_name'])) { return $this->ex(90102); }
+		
+		$user_pass = $user['password'];
+		
+		$parsed_user = array_merge($user, $this->generate_user_pass($user_pass));
+		$parsed_user['permission'] = 1;
+		log_message('info', 'register user_pass = '.$parsed_user['password']);
+		// do set new user
+		$insert_result = $this->user_model->add_persional_user($parsed_user);
+		if (!$insert_result) {
+			log_message('error', 'register db failed');
+			return $this->ex(90103);
+		}
+		// 如果成功返回login数据
+		return $this->login($parsed_user['user_name'], $user_pass);
+	}
 
 
 	// *************************************

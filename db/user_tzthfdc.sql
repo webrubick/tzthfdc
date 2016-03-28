@@ -46,10 +46,10 @@ INSERT INTO `db_tzthfdc`.`Tab_UserGroup`(`group_name`, `level`) VALUES ('个人'
 -- Table `db_tzthfdc`.`Tab_User` data yytest
 -- -----------------------------------------------------
 -- !+=|-_/';'.system@#$%^&*()19900615
-INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('admin', 'YY', 'f853db4d7e78a7dfc8fcd708ec305c7e', '15221543209', '574879667', 'yy15151877621@126.com', 'lQwdhO', '1', '1');
-INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('yy', 'YY', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '1');
-INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`) VALUES ('yyyy', 'YY1', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '0');
-INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`) VALUES ('yunr', 'YY2', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '0');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`, `gid`) VALUES ('admin', 'YY', 'f853db4d7e78a7dfc8fcd708ec305c7e', '15221543209', '574879667', 'yy15151877621@126.com', 'lQwdhO', '1', '1', '1');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`, `gid`) VALUES ('yy', 'YY', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '1', '3');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `permission`, `gid`) VALUES ('yyyy', 'YY1', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '1', '0', '3');
+INSERT INTO `db_tzthfdc`.`Tab_User`(`user_name`, `true_name`, `password`, `contact_mobile`, `qqchat`, `email`, `salt`, `sex`, `gid`) VALUES ('yunr', 'YY2', '3544d4b0fd2d2f47ec793359b3d626a6', '15221543209', '574879667', 'yy15151877621@126.com', '3RzQxs', '0', '3');
 
 
 -- -----------------------------------------------------

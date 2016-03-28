@@ -53,6 +53,13 @@ $route['default_controller'] = 'portal';
 $route['sellhouse/(:num)'] = 'sellhouse/index/$1';
 $route['renthouse/(:num)'] = 'renthouse/index/$1';
 
+$route['login'] = 'portal/login';
+$route['register'] = 'portal/register';
+$route['login_vercode'] = 'portal/login_vercode';
+$route['register_vercode'] = 'portal/register_vercode';
+$route['logout'] = 'portal/logout';
+
+$route['other/(:any)/(:any)'] = 'other/$1_$2';
 $route['other/(:any)/(:any)'] = 'other/$1_$2';
 // $route['(.+)'] = 'welcome/redirect';
 

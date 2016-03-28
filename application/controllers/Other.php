@@ -11,6 +11,7 @@ class Other extends MY_Controller {
 	
 	public function __construct() {
 		parent::__construct();
+		$this->load_sessionaccess();
 		$this->load->helper('house');
 	}
 

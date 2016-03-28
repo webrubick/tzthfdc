@@ -91,9 +91,21 @@ header {
 	box-shadow: 0 1px 2px #ccc;	
 }
 
-header.welcome {
+header.welcome, .session-module {
     height: 50px;
     line-height: 50px;
+}
+
+.session-module {
+    position: absolute;
+    display: block;
+    top: 0px;
+    width: 100%;
+    text-align: right;
+}
+
+header.welcome > *, .session-module > * {
+    position: relative;
 }
 
 header.welcome .call {
@@ -161,8 +173,6 @@ header .primary-logo-img {
     color: #f46;
 }
 
-
-
 /********************************************/
 /*底部*/
 footer {
@@ -174,4 +184,116 @@ footer {
 	background: #2b2d2e;
 	text-align: center;
 	line-height: normal;
+}
+
+
+
+
+
+
+
+
+
+.session-dropdown {
+    display:block;
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    right: 0;
+    width: 565px;
+    height: 342px;
+    background: #fff;
+    
+    text-align: right;
+    border: 1px solid #f46;
+    
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+.op img {
+    width: 20px;
+}
+
+#dltc_main {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+#dltc_main > ul li {
+    display: inline-block;
+    vertical-align: top;
+    outline: none;
+}
+
+.session-personal {
+    width: 350px;
+    margin: 10px 20px;
+}
+
+.session-personal .tab li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 10px;
+    width: 140px;
+    
+    margin: 0;
+    list-style: none;
+    
+    text-align: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #f46;
+    
+    color: rgb(204, 204, 204);
+}
+
+.session-personal .tab li.hover {
+    font-weight: bold;
+    color: #f46;
+    border-left: 1px solid #f46;
+    border-right: 1px solid #f46;
+    border-top: 1px solid #f46;
+    border-bottom: 1px solid #FFF;
+}
+
+.session-admin {
+    width: 160px;
+    height: 300px;
+    border-left: 1px dashed #ccc;
+    text-align: center;
+    padding-top: 120px;
+    color: #ccc;
+}
+.session-admin a {
+    color: #f46;
+}
+
+.session-module form {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin-top: 30px;
+}
+.session-module form label {
+    font-weight: normal;
+    width: 4.1em;
+}
+
+.session-module form input[type=text], .session-module form input[type=password] {
+    padding: 0px;
+}
+
+.session-module form input[type=button] {
+    background: #f46;
+    color: #fff;
+}
+
+#inputCode {
+    width: 5em;
+}
+
+.session-module form .formMsg {
+    color: red;
+    font-size: .8em;
 }
