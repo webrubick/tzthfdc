@@ -49,6 +49,11 @@ function get_sim_user_info() {
 function prepare_user_info($query_user) {
 	// set raw
 	set_raw_user_info($query_user);
+	if ($query_user['gid'] == 4) {
+	    set_user_field('adminhouse_url', 'other/adminhouse');
+	} else {
+	    set_user_field('adminhouse_url', 'adminhouse/sell_index');
+	}
 	return get_sim_user_info();
 }
 
@@ -68,7 +73,8 @@ class Sessionaccess {
 			'qqchat', 'wechat', 'email',
 			'avatar', 
 			'gid',
-			'permission'
+			'permission',
+			'adminhouse_url'
 	);
 	
     // We'll use a constructor, as you can't directly call a function

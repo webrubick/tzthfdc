@@ -14,7 +14,9 @@ class Other extends MY_Controller {
 		$this->load_sessionaccess();
 		$this->load->helper('house');
 	}
-
+	
+	// >>>>>>>>>>>>>>>>>>>>>>>
+	// 游客方式
     public function addsell() {
         loadCommonInfos($this);
         $this->load->view('portal/other/addsell', $this);
@@ -77,6 +79,44 @@ class Other extends MY_Controller {
 		$api_result = $this->adminrenthouse_api->update_rent_image_other($hid);
 		echo json_encode($api_result);
     }
+    // end 游客方式
+    
+    
+    
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 个人用户
+    public function adminhouse() {
+        // 获取当前分类
+		$this->generate_cat_kw();
+		$uid = get_session_uid();
+
+		if ($this->cat == 0) {
+			$this->load->api('adminsellhouse_api');
+			$list_result = $this->adminsellhouse_api->sell_list($uid, $this->kw);
+		} else {
+			$this->load->api('adminrenthouse_api');
+			$list_result = $this->adminrenthouse_api->rent_list($uid, $this->kw);
+		}
+		$this->houses = $list_result['data'];
+        $this->load->view('portal/other/adminhouse', $this);
+    }
+    
+	private function generate_cat_kw() {
+		$cat = $this->input->get_post('cat', TRUE);
+		if (!isset($cat) || empty($cat) || intval($cat) == 0) {
+			$cat = 0;
+		} else {
+			$cat = 1;
+		}
+		$this->cat = $cat; // save cat variable
+
+		// 获取当前关键词
+		$kw = $this->input->get_post('kw', TRUE);
+		if (!isset($kw) || empty($kw)) {
+			$kw = '';
+		}
+		$this->kw = $kw;
+	}
 
 }
 

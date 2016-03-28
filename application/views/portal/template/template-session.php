@@ -20,6 +20,8 @@
 		    <div class="fixed-sub-container">
 		        您好，<?php print_r($true_name); ?>！
 		        [<a id="session-logout" href="javascript:logout();" class="session-btn">注销</a>]
+		        &nbsp;|&nbsp;
+		        <a href="<?php print_r($adminhouse_url); ?>" class="session-btn" target="_blank">我的房源</a>
 		    </div>
 		</div>
 		
