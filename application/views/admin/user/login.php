@@ -1,7 +1,7 @@
 <!-- Header -->
 <?php  $this->load->view('admin/template/template-admin-header'); ?>
 
-    <title>个人信息管理-登录</title>
+    <title>后台管理系统-登录</title>
 
     <!-- Local global -->
     <link href="public/css/global.css" rel="stylesheet" type="text/css">

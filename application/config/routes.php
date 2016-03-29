@@ -54,7 +54,9 @@ $route['sellhouse/(:num)'] = 'sellhouse/index/$1';
 $route['renthouse/(:num)'] = 'renthouse/index/$1';
 
 $route['login'] = 'personal/login';
+$route['login/(:any)'] = 'personal/login_$1';
 $route['register'] = 'personal/register';
+$route['register/(:any)'] = 'personal/register_$1';
 $route['login_vercode'] = 'personal/login_vercode';
 $route['register_vercode'] = 'personal/register_vercode';
 $route['logout'] = 'personal/logout';

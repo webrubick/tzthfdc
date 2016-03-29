@@ -242,8 +242,13 @@ class User_api extends API {
 	 * 注销
 	 */
 	public function logout() {
+	    $logout_redirect_url = '';
+	    $gid = get_user_field('gid');
+	    if (isset($gid) && $gid < 4) {
+	        $logout_redirect_url = 'admin/login';
+	    }
 		clear_login();
-		return $this->ok();
+		return $this->ok($logout_redirect_url);
 	}
 
 	/**

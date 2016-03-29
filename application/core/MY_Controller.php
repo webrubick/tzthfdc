@@ -25,12 +25,15 @@ class MY_Controller extends CI_Controller {
 		if ($need_login) {
 			if (!is_login()) {
 				// 如果没有登录
-				if ($redirect == '') {
-				    if (isset($this->unlogin_url)) {
-				        $redirect = $this->unlogin_url;
-				    }
-				}
-				redirect(base_url($redirect));
+				// if ($redirect == '') {
+				//     if (isset($this->unlogin_url)) {
+				//         $redirect = $this->unlogin_url;
+				//     }
+				// }
+				// redirect(base_url($redirect));
+				
+				// 暂时所有的退出登录都跳到首页
+				redirect(base_url());
 			}
 		}
 	}

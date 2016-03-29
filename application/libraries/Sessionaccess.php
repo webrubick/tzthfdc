@@ -10,16 +10,7 @@ function is_login() {
 // 快捷的清除login信息
 function clear_login() {
 	$CI =& get_instance();
-	$index_url;
-	if (get_user_field('gid') < 4) {
-	    $index_url = 'admin';
-	} else {
-	    $index_url = '';
-	}
 	$CI->sessionaccess->clear_user_info();
-	
-	set_user_field('adminhouse_url', 'adminhouse/sell_index');
-	set_user_field('index_url', $index_url);
 }
 
 // 尽量少调用

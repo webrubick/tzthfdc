@@ -73,9 +73,10 @@ class Admin extends MY_Controller {
 		$this->check_state_common('GET', FALSE);
 		
 		$this->load->api('user_api');
-		$this->user_api->logout();
+		$api_result = $this->user_api->logout();
+		// 登出的时候，最好根据用户的类型，返回要跳转的地址
 		// 如果没有登录
-		redirect(base_url('admin/login'));
+		redirect(base_url($api_result['data']));
 	}
 
 	// 加载验证码

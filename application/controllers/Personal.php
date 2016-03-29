@@ -10,15 +10,20 @@ class Personal extends MY_Controller {
 		$this->load_sessionaccess();
 	}
 	
-	public function index() {
-		$this->check_state_common('GET', TRUE);
-		// 如果已经登录，则显示当前用户能够看到的管理界面
-		$this->load->view('admin/index', $this);
-	}
-	
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	// 用户登录注册
 	public function login() {
+	    $this->check_state_common('GET', FALSE);
+		if (is_login()) {
+			// 如果已经登录，则显示当前用户能够看到的管理界面
+			redirect(base_url());
+		} else {
+			// 如果没有登录
+			$this->load->view('admin/user/login', $this);
+		}
+	}
+	
+	public function login_ajax() {
 	    $this->check_state_api('POST');
 
 		// 获取所有的数据
@@ -35,7 +40,7 @@ class Personal extends MY_Controller {
 		echo json_encode($api_result);
 	}
 	
-	public function register() {
+	public function register_ajax() {
 	    $this->check_state_api('POST');
 
 		// 获取所有的数据
