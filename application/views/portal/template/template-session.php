@@ -109,15 +109,26 @@
         var sessionBtn = $('.session-module .session-btn');
         var sessionDropdown = $('.session-dropdown');
         sessionBtn.hover(function() {
-            if (sessionDropdown.is(":hidden")) {
-                sessionDropdown.show();
-            }
+            showSessionDropdown();
         }, function() {
             
         });
+        sessionDropdown.hover(function() {
+            
+        }, function() {
+            hideSessionDropdown();
+        });
+        
+        function showSessionDropdown() {
+            if (sessionDropdown.is(":hidden")) {
+                sessionDropdown.show();
+            }
+        }
         
         function hideSessionDropdown() {
-            sessionDropdown.hide();
+            if (sessionDropdown.is(":visible")) {
+                sessionDropdown.hide();
+            }
         }
         
         var tabRegister = $('#tab-register');

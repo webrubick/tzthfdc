@@ -48,10 +48,12 @@
         		&nbsp;&nbsp;&nbsp;&nbsp;
         		<img src="public/img/portal/ic_call.png" style="width: 25px; height: 25px; margin-top: -5px;" />
         		<span class="highlight call"><?php print_r(WEBSITE_CONTACT); ?></span>
+        		
+<?php $this->load->view('portal/template/template-session'); ?>
+        		
 			</div>
 		</header>
 		
-<?php $this->load->view('portal/template/template-session'); ?>
 
 		<header id="logo-header" class="sub-container">
 			<div id="top-nav" class="fixed-sub-container">
