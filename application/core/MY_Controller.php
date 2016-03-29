@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller {
         $this->load->helper('url');
 	}
 
-	public function check_state_common($request_method, $need_login = FALSE) {
+	public function check_state_common($request_method, $need_login = FALSE, $redirect = '') {
 		if (isset($request_method)) {
 			$cur_req_method = $this->input->method(TRUE);
 			$request_method = strtoupper($request_method);
@@ -25,7 +25,12 @@ class MY_Controller extends CI_Controller {
 		if ($need_login) {
 			if (!is_login()) {
 				// 如果没有登录
-				redirect(base_url('admin/login'));
+				if ($redirect == '') {
+				    if (isset($this->unlogin_url)) {
+				        $redirect = $this->unlogin_url;
+				    }
+				}
+				redirect(base_url($redirect));
 			}
 		}
 	}

@@ -5,6 +5,7 @@ class Admincommon extends MY_Controller {
 	
 	// 后台的管理登录界面
 	const ADMIN_LOGIN = 'admin/user/login';
+	protected $unlogin_url = 'admin/login';
 	
 	public function __construct() {
 		parent::__construct();

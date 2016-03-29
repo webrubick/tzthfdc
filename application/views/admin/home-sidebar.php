@@ -1,6 +1,6 @@
 <aside id="sidebar">
 	<nav id="main-nav">
-		<a href="<?php echo 'admin'; ?>" class="ico-home"></a>
+		<!--<a href="<?php echo 'admin'; ?>" class="ico-home"></a>-->
 		<?php $superUser = (isset($uid) && $uid == 1);?>
 		<?php $allowed = (isset($permission) && !empty($permission));?>
 		<?php if ($allowed) : ?>

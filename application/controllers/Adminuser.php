@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // 管理用户
 class Adminuser extends MY_Controller {
 
+	protected $unlogin_url = 'admin/login';
+
 	public function __construct() {
 		parent::__construct();
 		$this->load_sessionaccess();

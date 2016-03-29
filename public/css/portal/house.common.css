@@ -1,15 +1,6 @@
 @charset "utf-8";
 /* ---------- Common ---------- */
-
-body {
-	_width: expression(document.body.clientWidth <= 850 ? "850px": "auto");
-	min-width: 850px;
-	font-size:14px;
-  	font-family:"Microsoft YaHei", "微软雅黑"; 
-	color: #333;
-	background:#fff url(../../img/admin/bg.jpg) center center no-repeat;
-}
-
+/* ---------- 用来代替 admin.common.css ---------- */
 
 /* ---------- Login ---------- */
 .form-sign-h1 {
@@ -104,7 +95,7 @@ body {
 ----------------------------------*/
 .admin-ui-dialog {
 	display:none; 
-	position:absolute; 
+	position:fixed; /** TODO xxx changed xxx**/ 
 	z-index:1001; 
 	min-width:300px; 
 	background-color:#fff; 
@@ -113,6 +104,7 @@ body {
 	-webkit-background-clip:content; 
 	background-clip:content-box;
 }
+
 .admin-ui-dialog-head {
 	line-height:40px; 
 	padding:0 8px 0 16px;

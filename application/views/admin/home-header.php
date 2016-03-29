@@ -1,5 +1,10 @@
 <header id="header">
   
+    <div class="logo">
+        <img src="public/img/admin/n_home.png" />
+        个人信息管理
+    </div>
+  
 	<div class="user">
 		<span>hi, <?php echo $true_name; ?></span>
 		<a href="<?php echo base_url('adminuser/edit?uid=').$uid;?>" class="setup" title="修改个人资料"></a>
