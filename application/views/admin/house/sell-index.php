@@ -1,32 +1,7 @@
 <!-- Header -->
-<?php $this->load->view('admin/template/template-admin-header'); ?>
+<?php  $this->load->view('admin/template/template-admin-header', array('website_title' => WEBSITE_NAME . '-出售房源')); ?>
  
-		<title>后台管理系统-我的房源</title>
-
-		<!-- Local global -->
-		<link href="public/css/global.css" rel="stylesheet" type="text/css">
-
-		<!-- Bootstrap -->
-		<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-		<!-- Local admin -->
-		<link href="public/css/admin/admin.common.css" rel="stylesheet" type="text/css">
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script type="text/javascript" src="public/scripts/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script type="text/javascript" src="public/scripts/bootstrap.min.js"></script>
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script type="text/javascript" src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script type="text/javascript" src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-
 	<!-- content -->
-
 	<?php $this->load->view('admin/home-header'); ?>
 	<?php $this->load->view('admin/home-sidebar'); ?>
 
@@ -53,12 +28,12 @@
 						<tr>
 							<th class="check"><input type="checkbox" onclick="checkAll(this,'hid[]')" /></th>
 							<th>标题</th>
-							<th width="120px">户型</th>
-							<th width="180px">更新时间</th>
-							<th width="100px">操作</th>
+							<th class="housetype">户型</th>
+							<th class="updatetime">更新时间</th>
+							<th class="op">操作</th>
 						</tr>
 					</thead>
-					<tbody> <form id="delForm" action="<?php echo base_url('adminhouse/del_sell/ajax'); ?>" method="post">
+					<tbody> <form id="delForm" action="adminhouse/del_sell/ajax" method="post">
 						<input type="hidden" name="cat" value="<?php echo $cat; ?>" />
 						<input type="hidden" name="kw" value="<?php echo $kw; ?>" />
 						<?php 

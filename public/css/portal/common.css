@@ -315,6 +315,18 @@ footer {
   text-align: center;
 }
 
+#house-list-container th.housetype {
+    width: 120px;
+}
+
+#house-list-container th.updatetime {
+    width: 200px;
+}
+
+#house-list-container th.op {
+    width: 150px;
+}
+
 .house-op {
   font-size: 10px;
   padding: 1px 6px;
@@ -436,7 +448,7 @@ footer {
 
 
 .house-edit-container th small, .house-edit-container td small, .house-input_text_wrap span small {
-  font-size: 0.5em;
+  font-size: 0.8em;
   color:#e74c3c;
 }
 
