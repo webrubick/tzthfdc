@@ -46,7 +46,7 @@ footer {
 /* Main Navigation
 ----------------------------------*/
 #main-nav{width:100px; border-top:1px #444 solid;}
-#main-nav a{display:block; height:70px; line-height:70px; color:#fff; font-size:14px; font-weight:bold; letter-spacing:1px; text-align:center; text-decoration:none; background:#000 center 10px no-repeat; transition:all ease-in 0.2s; -webkit-transition:all ease-in 0.2s; -moz-transition:all ease-in 0.2s;}
+#main-nav a{display:block; height:60px; line-height:60px; color:#fff; font-size:14px; font-weight:bold; letter-spacing:1px; text-align:center; text-decoration:none; background:#000 center 10px no-repeat; transition:all ease-in 0.2s; -webkit-transition:all ease-in 0.2s; -moz-transition:all ease-in 0.2s;}
 #main-nav a:hover{background-color:#FF3366;}
 #main-nav .ico-home{background-image:url(../../img/admin/n_home.png);}
 
@@ -175,7 +175,7 @@ body.menu {
     margin-top:20px
 }
 
-.form-sign .avator {
+.form-sign .avator, .narrow-form .avator {
     width: 100px;
     height: 100px;
 }
@@ -192,3 +192,10 @@ body.menu {
     padding: 15px 0px;
 }
 
+.narrow-form {
+    max-width: 500px;
+}
+
+.narrow-form .label-col {
+  width: 100px;
+}
