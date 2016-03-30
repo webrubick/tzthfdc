@@ -3,9 +3,7 @@
  * Requires : jQuery v1.8.2
  * Copyright © 2014 VIP.com. All rights reserved.
  */
- 
 	var ui = {
-		
 		/** 
 		 * TabBox
 		 */
@@ -301,7 +299,10 @@ function simplePost(postUrl, postData, callbackFuncs) {
 					(top || window).location.href = data.data;
 				}
 			} else {
-				showToast(data.msg);
+			    if (callbackFuncs && callbackFuncs.notok) {
+			        callbackFuncs.notok(data);
+			    }
+			    showToast(data.msg);
 			}
 		},
 		beforeSend:function(){

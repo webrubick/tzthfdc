@@ -8,8 +8,6 @@
 	};
 	</script>
 
-    <link href="public/css/portal/house.common.css" rel="stylesheet" type="text/css">
-    
     <section>
 		<div class="sub-container fixed-sub-container">
     		<div id="house-container">

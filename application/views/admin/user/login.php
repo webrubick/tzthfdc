@@ -1,37 +1,7 @@
 <!-- Header -->
-<?php  $this->load->view('admin/template/template-admin-header'); ?>
+<?php  $this->load->view('admin/template/template-admin-header', array('website_title' => WEBSITE_NAME . '-登录')); ?>
 
-    <title>后台管理系统-登录</title>
-
-    <!-- Local global -->
-    <link href="public/css/global.css" rel="stylesheet" type="text/css">
-    
-    <!-- Bootstrap -->
-    <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Local admin -->
-    <link href="public/css/admin/admin.common.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script type="text/javascript" src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script type="text/javascript" src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <style type="text/css">
-    #content-container {
-        display: none;
-    }
-    </style>
-  </head>
-
-
-  <body>
-
-    <h1 class="form-sign-h1">后台管理系统</h1>
-
-    <div id="content-container" class="container">
+    <div id="content-container" class="container" style="display: none;">
       <div class="form_wrapper">
             <h2 class="form-sign-heading">用户登录</h2>
 
@@ -58,11 +28,18 @@
                       </tr>
                   </table>
                   
+                  <div id="content-login">
+                        <label for="inputCode">验证码</label>
+                        <input type="text" name="code" id="inputCode" >
+                        <img data-src="admin/login_vercode" src="admin/login_vercode" id="inputCodeImg" align="absmiddle" style="height:22px">
+                        <span class="kbq"><small><a href="javascript:;" id="change-inputcode">看不清楚？换一张</a></small></span>&nbsp;&nbsp;
+                  </div>
+                  
                   <button class="btn btn-lg btn-primary btn-block login-btn" type="submit" onClick="return check_input()">登录</button>
 
-                  <div style="text-align: right; margin: 10px 0;">
-                      <a href="admin/register">去注册></a>
-                  </div>
+                  <!--<div style="text-align: right; margin: 10px 0;">-->
+                  <!--    <a href="admin/register">去注册></a>-->
+                  <!--</div>-->
               </form>
           </div>
         
@@ -84,6 +61,11 @@
         return commonSignValidate("<?php echo base_url('admin/login/ajax'); ?>");
       }
       </script>
-
+    
+    <footer>
+    	<div>
+    		<span class=“copyright”>© <?php print_r(WEBSITE_C_YEAR); ?> <?php echo WEBSITE_NAME; ?></span>
+    	</div>
+    </footer>
 <!-- Footer -->
 <?php $this->load->view('admin/template/template-admin-footer'); ?>

@@ -8,10 +8,6 @@ class User_model extends MY_Model {
 	
 	// 表名
 	const TABLE_NAME = 'tab_user';
-	const SUPER_ADMIN = 1;
-	const ADMIN_MANAGER = 2;
-	const ADMIN = 3;
-	const PERSIONAL = 4;
 
 	private $COLS = array(
 		'uid', 'user_name', 'true_name', 'password', 'salt', 'sex',
@@ -85,7 +81,7 @@ class User_model extends MY_Model {
 	public function add_user($user) {
 		$user = array_filter_by_key($user, $this->INSERT_COLS);
 		$this->setTable($this::TABLE_NAME);
-		$user['gid'] = $this::ADMIN;
+		$user['gid'] = USER_ADMIN;
 		$result = $this->addData($user);
 		return isset($result);
 	}
@@ -93,7 +89,7 @@ class User_model extends MY_Model {
 	public function add_persional_user($user) {
 		$user = array_filter_by_key($user, $this->INSERT_COLS);
 		$this->setTable($this::TABLE_NAME);
-		$user['gid'] = $this::PERSIONAL;
+		$user['gid'] = USER_PERSIONAL;
 		$result = $this->addData($user);
 		return isset($result);
 	}

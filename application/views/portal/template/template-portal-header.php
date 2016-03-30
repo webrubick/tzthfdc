@@ -11,16 +11,16 @@
 	    <?php echo meta('keywords', WEBSITE_KEYWORD); ?>
 	    <?php echo meta('description', WEBSITE_KEYWORD); ?>
 	    <link rel="shortcut icon" href="public/favicon.ico">
-	    <title><?php echo WEBSITE_NAME; ?></title>
+	    <title><?php echo ((isset($website_title) && !empty($website_title)) ? $website_title : WEBSITE_NAME); ?></title>
 
-		<!-- Local global -->
 		<link href="public/css/global.css" rel="stylesheet" type="text/css">
-
 		<!-- Bootstrap -->
 		<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-		<!-- Local portal -->
 		<link href="public/css/portal/common.css" rel="stylesheet" type="text/css">
+		
+		<!-- Local portal -->
+		<link href="public/css/portal/index.css" rel="stylesheet" type="text/css">
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script type="text/javascript" src="public/scripts/jquery.min.js"></script>

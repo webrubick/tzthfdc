@@ -7,6 +7,12 @@ function is_login() {
 	return $CI->sessionaccess->check_login();
 }
 
+function is_super_user() {
+    $CI =& get_instance();
+    $gid = get_user_field('gid');
+	return isset($gid) && $gid == USER_SUPER_ADMIN;
+}
+
 // 快捷的清除login信息
 function clear_login() {
 	$CI =& get_instance();

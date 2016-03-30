@@ -1,39 +1,7 @@
 <!-- Header -->
-<?php $this->load->view('admin/template/template-admin-header'); ?>
+<?php  $this->load->view('admin/template/template-admin-header', array('website_title' => WEBSITE_NAME . '-注册')); ?>
 
-		<title>后台管理系统-注册</title>
-
-		<!-- Local global -->
-		<link href="public/css/global.css" rel="stylesheet" type="text/css">
-
-		<!-- Bootstrap -->
-		<link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-		<!-- Local admin -->
-		<link href="public/css/admin/admin.common.css" rel="stylesheet" type="text/css">
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script type="text/javascript" src="public/scripts/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script type="text/javascript" src="public/scripts/bootstrap.min.js"></script>
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script type="text/javascript" src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script type="text/javascript" src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-		<style type="text/css">
-		#content-container {
-			display: none;
-		}
-		</style>
-	</head>
-	<body>
-
-	<!-- content -->
-	<h1 class="form-sign-h1">后台管理系统</h1>
-	<div id="content-container" class="container">
+	<div id="content-container" class="container register" style="display: none;">
 		<div class="form_wrapper">
 			<h2 class="form-sign-heading">用户注册</h2>
 
@@ -136,8 +104,6 @@
 		</div>
 	</div>
 
-
-
 	<script type="text/javascript" src="public/scripts/md5.js"></script>
 	<script type="text/javascript" src="public/scripts/admin/admin.common.js"></script>
 	<script type="text/javascript" src="public/scripts/admin/admin.validate.js"></script>
@@ -154,7 +120,11 @@
 	prepare_upload(null);
 
 	</script>
-
-
+	
+    <footer>
+    	<div>
+    		<span class=“copyright”>© <?php print_r(WEBSITE_C_YEAR); ?> <?php echo WEBSITE_NAME; ?></span>
+    	</div>
+    </footer>
 <!-- Footer -->
 <?php $this->load->view('admin/template/template-admin-footer'); ?>

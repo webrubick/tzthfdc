@@ -11,6 +11,27 @@ class Adminuser extends MY_Controller {
 		$this->load_sessionaccess();
 	}
 
+    public function add() {
+		$this->check_state_common('GET', TRUE);
+		$this->check_super_user();
+		
+		$this->load->view('admin/user/add-user', $this);
+    }
+    
+    public function add_ajax() {
+		$this->check_state_api('POST');
+		$this->check_super_user_api();
+
+		// 获取所有的数据
+		$post = $this->input->post(NULL, TRUE);
+		$this->load->api('user_api');
+		$api_result = $this->user_api->add_user($post);
+		if (is_ok_result($api_result)) {
+			$api_result['data'] = base_url('adminuser/add');
+		}
+		echo json_encode($api_result);
+	}
+
 	public function edit() {
 		$this->check_state_common('GET', TRUE);
 		$this->load->view('admin/user/edit-user', $this);
@@ -60,11 +81,10 @@ class Adminuser extends MY_Controller {
 
 	public function grant() {
 		$this->check_state_common('GET', TRUE);
-
+		$this->check_super_user();
+		
 		$uid = get_session_uid();
-		if (!isset($uid) || $uid != 1) {
-			ishow_error('Forbidden', 'Not Super User', 403);
-		}
+		
 		$this->load->api('user_api');
 		$api_result = $this->user_api->get_all_user_by_super($uid);
 		if (is_ok_result($api_result)) {
@@ -75,6 +95,7 @@ class Adminuser extends MY_Controller {
 
 	public function grant_ajax() {
 		$this->check_state_api('POST');
+		$this->check_super_user_api();
 
 		// 获取所有的数据
 		$uid = $this->input->post('uid', TRUE);

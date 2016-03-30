@@ -9,6 +9,9 @@ var qqchat = $("#inputQQ");
 var email = $("#inputEmail");
 var code_word = $("#inputCodeWord");
 
+var inputVerCode = $('#inputCode');
+var inputVerCodeImg = $('#inputCodeImg');
+var changeInputVerCode = $('#change-inputcode');
 
 var postIsProgressing;
 function commonSignValidate(postUrl) {
@@ -59,6 +62,16 @@ function commonSignValidate(postUrl) {
 			return false;
 		}
 		result += "&code_word=" + $.urlencode(val);
+	}
+	
+	if (inputVerCode && inputVerCode.length > 0) {
+	    var val = $.trim(inputVerCode.val());
+		if (val == "") {
+			showToast("请输入验证码");
+			inputVerCode.focus();
+			return false;
+		}
+		result += "&code=" + $.urlencode(val);
 	}
 	
 	if (true_name && true_name.length > 0) {
@@ -136,6 +149,11 @@ function commonSignValidate(postUrl) {
 
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			__releaseProgress();
+			changeInputVerCodeFunc();
+		},
+		
+		notok : function() {
+		    changeInputVerCodeFunc();
 		}
 	});
 
@@ -191,3 +209,8 @@ function __releaseProgress() {
 	postIsProgressing = false;
 	userInfoRedirectUrl = undefined;
 }
+
+function changeInputVerCodeFunc() {
+    inputVerCodeImg.attr('src', inputVerCodeImg.data('src'));
+}
+changeInputVerCode.click(changeInputVerCodeFunc);

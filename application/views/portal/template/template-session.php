@@ -1,6 +1,4 @@
 		
-		<link href="public/css/portal/house.common.css" rel="stylesheet" type="text/css">
-		
 <?php if (is_login()) : ?>
 
         <div class="session-module">

@@ -28,6 +28,12 @@ function login() {
 	simplePost('/login/ajax', postData, {
 	    ok : function() {
 	        (top || window).location.reload();
+	    },
+	    notok : function() {
+	        change_logincode();
+	    },
+	    error : function() {
+	        change_logincode();
 	    }
 	});
 }
@@ -88,6 +94,12 @@ function register() {
 	simplePost('/register/ajax', postData, {
 	    ok : function() {
 	        (top || window).location.reload();
+	    },
+	    notok : function() {
+	        change_registcode();
+	    },
+	    error : function() {
+	        change_registcode();
 	    }
 	});
 }
@@ -100,10 +112,18 @@ function logout() {
 	});
 }
 
+function change_logincode() {
+    $("#logincode").get(0).src="/login_vercode?rand="+Math.random();
+}
+
+function change_registcode() {
+    $("#registcode").get(0).src="/register_vercode?rand="+Math.random();
+}
+
 $("#change_registcode").click(function(){
-	$("#registcode").get(0).src="/register_vercode?rand="+Math.random();
+	change_registcode();
 });
 
 $("#change_logincode").click(function(){
-	$("#logincode").get(0).src="/login_vercode?rand="+Math.random();
+	change_logincode();
 });

@@ -77,6 +77,19 @@ class MY_Controller extends CI_Controller {
         }
 	}
 	
+	public function check_super_user() {
+	    if (!is_super_user()) {
+			ishow_error('Forbidden', 'Not Super User', 403);
+		}
+	}
+	
+	public function check_super_user_api() {
+	    if (!is_super_user()) {
+			echo json_encode(common_result(403, 'Not Super User'));
+		    exit(EXIT_SUCCESS);
+		}
+	}
+	
 }
 
 ?>
