@@ -15,7 +15,7 @@ class Test extends MY_Controller {
 	                'url' => 'http://www.baidu.com'
 	            ),
 	        ));
-	    
+	    phpinfo();
 	}
 	
 	public function test1(){
