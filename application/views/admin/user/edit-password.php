@@ -5,34 +5,38 @@
 	<?php $this->load->view('admin/home-header'); ?>
 	<?php $this->load->view('admin/home-sidebar'); ?>
 
-	<div id="content">
+    <div id="content">
+		<div id="house-container">
 
-		<div class="form_wrapper">
-			<h2 class="form-sign-heading">修改密码</h2>
+            <h3>用户信息管理 <small>修改密码</small></h3>
+			
+			<hr/>
 
-			<form id="registerForm" class="form-sign form-signup" action="" onsubmit="return false" method="post">
-				<table class="table table-striped input-table">
-					<tr class="danger">
-						<td>
-							<label for="inputPassword">新密码</label>
-						</td>
-						<td>
-							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码">
-						</td>
-					</tr>
-
-					<tr class="danger">
-						<td>
-							<label for="inputPassword2">再输一次</label>
-						</td>
-						<td>
-							<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="重新输入一次密码">
-						</td>
-					</tr>
-				</table>
-
-				<button class="btn btn-lg btn-primary btn-block login-btn" type="submit" onClick="return checkInput()">提交修改</button>
-			</form>
+            <div id="house-list-container">
+                <form id="registerForm" class="narrow-form" action="" onsubmit="return false" method="post">
+    				<table class="table table-hover input-table">
+    					<tr>
+    						<td class="label-col">
+    							<label for="inputPassword">新密码</label>
+    						</td>
+    						<td class="input-col">
+    							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码">
+    						</td>
+    					</tr>
+    
+    					<tr>
+    						<td class="label-col">
+    							<label for="inputPassword2">再输一次</label>
+    						</td>
+    						<td class="input-col">
+    							<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="重新输入一次密码">
+    						</td>
+    					</tr>
+    				</table>
+    
+    				<button class="btn btn-lg btn-primary login-btn" type="submit" onClick="return checkInput()">提交修改</button>
+    			</form>
+            </div>
 		</div>
 	</div>
 
