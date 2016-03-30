@@ -84,10 +84,11 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-
-
-
-
+// users
+defined('USER_SUPER_ADMIN')      OR define('USER_SUPER_ADMIN', 1);
+defined('USER_ADMIN_MANAGER')      OR define('USER_ADMIN_MANAGER', 2);
+defined('USER_ADMIN')      OR define('USER_ADMIN', 3);
+defined('USER_PERSIONAL')      OR define('USER_PERSIONAL', 3);
 
 
 

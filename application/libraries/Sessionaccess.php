@@ -7,10 +7,16 @@ function is_login() {
 	return $CI->sessionaccess->check_login();
 }
 
+function is_super_user() {
+    $CI =& get_instance();
+    $gid = get_user_field('gid');
+	return isset($gid) && $gid == USER_SUPER_ADMIN;
+}
+
 // 快捷的清除login信息
 function clear_login() {
 	$CI =& get_instance();
-	return $CI->sessionaccess->clear_user_info();
+	$CI->sessionaccess->clear_user_info();
 }
 
 // 尽量少调用
@@ -49,6 +55,13 @@ function get_sim_user_info() {
 function prepare_user_info($query_user) {
 	// set raw
 	set_raw_user_info($query_user);
+	
+	set_user_field('adminhouse_url', 'adminhouse/sell_index');
+	if ($query_user['gid'] == 4) {
+	    set_user_field('index_url', '');
+	} else {
+	    set_user_field('index_url', 'admin');
+	}
 	return get_sim_user_info();
 }
 
@@ -68,7 +81,9 @@ class Sessionaccess {
 			'qqchat', 'wechat', 'email',
 			'avatar', 
 			'gid',
-			'permission'
+			'permission',
+			'adminhouse_url',
+			'index_url',
 	);
 	
     // We'll use a constructor, as you can't directly call a function

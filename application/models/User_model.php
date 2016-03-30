@@ -12,7 +12,13 @@ class User_model extends MY_Model {
 	private $COLS = array(
 		'uid', 'user_name', 'true_name', 'password', 'salt', 'sex',
 		'contact_tel', 'contact_mobile', 'qqchat', 'wechat', 'email', 'address', 'avatar',
-		'permission'
+		'permission', 'gid'
+	);
+
+	private $INSERT_COLS = array(
+		'user_name', 'true_name', 'password', 'salt', 'sex',
+		'contact_tel', 'contact_mobile', 'qqchat', 'wechat', 'email', 'address', 'avatar',
+		'permission', 'gid'
 	);
 	
 	public function __construct() {
@@ -47,6 +53,10 @@ class User_model extends MY_Model {
 		$this->setTable($this::TABLE_NAME);
 		return $this->getSingle(array('user_name'=>$user_name));	
 	}
+	public function get_by_persion_name($user_name) {
+		$this->setTable($this::TABLE_NAME);
+		return $this->getSingle(array('user_name'=>$user_name, 'gid' => $this::PERSIONAL ));	
+	}
 
 	/**
 	 * 根据用户名判断是否存在该用户
@@ -69,8 +79,17 @@ class User_model extends MY_Model {
 	 * @see CI_DB_result::insert  db->insert_id()
 	 */
 	public function add_user($user) {
-		$user = array_filter_by_key($user, $this->COLS);
+		$user = array_filter_by_key($user, $this->INSERT_COLS);
 		$this->setTable($this::TABLE_NAME);
+		$user['gid'] = USER_ADMIN;
+		$result = $this->addData($user);
+		return isset($result);
+	}
+	
+	public function add_persional_user($user) {
+		$user = array_filter_by_key($user, $this->INSERT_COLS);
+		$this->setTable($this::TABLE_NAME);
+		$user['gid'] = USER_PERSIONAL;
 		$result = $this->addData($user);
 		return isset($result);
 	}
@@ -84,7 +103,7 @@ class User_model extends MY_Model {
 	 * @see CI_DB_query_builder::update
 	 */
 	public function update_by_id($uid, $fields) {
-		$fields = array_filter_by_key($fields, $this->COLS);
+		$fields = array_filter_by_key($fields, $this->INSERT_COLS);
 		$this->setTable($this::TABLE_NAME);
 		return $this->editData(array('uid' => $uid), $fields);
 	}

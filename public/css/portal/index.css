@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+* , :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.428571429;
+    min-width: 980px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a, a:focus, img {
+    outline: 0;
+}
+
+a:hover {
+    color: #f46;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input, input[type=password], input[type=search], select, textarea {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-size: 1em;
+    padding: .5em;
+    outline: 0;
+    -webkit-transition: box-shadow .217s ease;
+    transition: box-shadow .217s ease;
+}
+
+input:focus, input[type=password]:focus, input[type=search]:focus, select:focus, textarea:focus {
+    border: 1px solid #00d1c1;
+}
+
+footer {
+	margin-top: 2em;
+}

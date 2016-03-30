@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS `db_tzthfdc`.`Tab_User` ;
 
 CREATE TABLE IF NOT EXISTS `db_tzthfdc`.`Tab_User` (
   `uid` INT NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `gid` INT COMMENT '用户ID',
   `user_name` VARCHAR(30) NULL COMMENT '用户名',
   `true_name` VARCHAR(45) NULL DEFAULT '顾客' COMMENT '用户真实姓名，如张三',
   `password` VARCHAR(100) NULL COMMENT '用户的密码',

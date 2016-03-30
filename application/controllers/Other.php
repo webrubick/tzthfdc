@@ -11,9 +11,17 @@ class Other extends MY_Controller {
 	
 	public function __construct() {
 		parent::__construct();
+		$this->load_sessionaccess();
 		$this->load->helper('house');
+		
+		if (is_login()) { // 如果是登录了的用户，不让到达该页面
+            redirect(base_url($this->adminhouse_url));
+            exit(0) ;
+        }
 	}
-
+	
+	// >>>>>>>>>>>>>>>>>>>>>>>
+	// 游客方式
     public function addsell() {
         loadCommonInfos($this);
         $this->load->view('portal/other/addsell', $this);
@@ -76,7 +84,8 @@ class Other extends MY_Controller {
 		$api_result = $this->adminrenthouse_api->update_rent_image_other($hid);
 		echo json_encode($api_result);
     }
-
+    // end 游客方式
+    
 }
 
 ?>

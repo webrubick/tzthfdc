@@ -1,7 +1,7 @@
 <aside id="sidebar">
 	<nav id="main-nav">
-		<a href="<?php echo 'admin'; ?>" class="ico-home"></a>
-		<?php $superUser = (isset($uid) && $uid == 1);?>
+		<!--<a href="<?php echo 'admin'; ?>" class="ico-home"></a>-->
+		<?php $superUser = (isset($gid) && $gid == USER_SUPER_ADMIN);?>
 		<?php $allowed = (isset($permission) && !empty($permission));?>
 		<?php if ($allowed) : ?>
 		<a href="javascript:void(0)" class="ico-nav" data-id="sn-house">管理房源</a>
@@ -10,6 +10,7 @@
 		<a href="<?php echo 'adminuser/edit'; ?>" class="ico-nav" >修改资料</a>
 		<?php if ($superUser) : ?>
 		<a href="javascript:void(0)" class="ico-nav" data-id="sn-common">公共信息</a>
+		<a href="<?php echo 'adminuser/add'; ?>" class="ico-nav">添加经纪人</a>
 		<a href="<?php echo 'adminuser/grant'; ?>" class="ico-nav">授权管理</a>
 		<?php endif; ?>
 	</nav>

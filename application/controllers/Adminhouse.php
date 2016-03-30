@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // 管理用户的房源
 class Adminhouse extends MY_Controller {
 
+	protected $unlogin_url = 'admin/login';
+	
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper('house');

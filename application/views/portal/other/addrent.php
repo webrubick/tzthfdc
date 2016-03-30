@@ -8,22 +8,6 @@
 	};
 	</script>
 
-    <link href="public/css/admin/admin.common.css" rel="stylesheet" type="text/css">
-    
-    <style>
-    body {
-        font-family: 'Hiragino Sans GB','Microsoft YaHei','黑体',sans-serif;
-        font-size: 14px;
-        line-height: 1.428571429;
-        color: #333;
-        min-width: 980px;
-        background: #eeeff1;
-    }
-    .admin-ui-dialog {
-        position: fixed;
-    }
-    </style>
-
     <section>
 		<div class="sub-container fixed-sub-container">
     		<div id="house-container">

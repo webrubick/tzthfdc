@@ -60,6 +60,8 @@
             微信联系人
         </p>
         
+<?php // 如果用户登录了，则不显示这一项 ?>
+<?php if (!is_login()) : ?>
         <div class="private-house">
             <a href="other/addsell" style="background: #f46">
             我要卖房
@@ -68,6 +70,8 @@
             我要出租
             </a>
         </div>
+<?php endif; ?>
+
     </div>
 	</body>
 </html>
