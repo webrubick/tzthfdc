@@ -4,7 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 function to_where_by_raw_conditions($CI, $conditions) {
-	$where = implode(' AND ', $conditions);
+    $where = '';
+    if (!empty($conditions)) {
+	    $where = implode(' AND ', $conditions);
+    }
     if (empty($where)) {
     	return '1 = 1';
     }

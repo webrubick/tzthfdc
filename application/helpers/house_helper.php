@@ -32,16 +32,21 @@ function to_room_title($house) {
 
 
 function loadCommonInfos($CI) {
-	$CI->load->api('admincommon_api');
-	$communitys_result = $CI->admincommon_api->community_list();
-	if (is_ok_result($communitys_result)) {
-		$CI->communitys = arrayofmap_to_keymap($communitys_result['data'], 'cid');
-	}
+    if (!isset($CI->communitys) || empty($CI->communitys)) {
+        $CI->load->api('admincommon_api');
+    	$communitys_result = $CI->admincommon_api->community_list();
+    	if (is_ok_result($communitys_result)) {
+    		$CI->communitys = arrayofmap_to_keymap($communitys_result['data'], 'cid');
+    	}
+    }
 
-	$areas_result = $CI->admincommon_api->area_list();
-	if (is_ok_result($areas_result)) {
-		$CI->areas = arrayofmap_to_keymap($areas_result['data'], 'aid');
-	}
+    if (!isset($CI->areas) || empty($CI->areas)) {
+        $areas_result = $CI->admincommon_api->area_list();
+    	if (is_ok_result($areas_result)) {
+    		$CI->areas = arrayofmap_to_keymap($areas_result['data'], 'aid');
+    	}
+    }
+	
 
 	$CI->house_types = array(
 		1 => '普通住宅',

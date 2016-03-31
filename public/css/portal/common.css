@@ -20,7 +20,10 @@ input, textarea, select {
   font-size:12px; 
 }
 
-
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
 
 /*门户网站的CSS*/
 .fixed-sub-container {

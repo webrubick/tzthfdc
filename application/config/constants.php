@@ -108,6 +108,7 @@ defined('PASS_MIN_LEN')      OR define('PASS_MIN_LEN', 6);
 defined('HOUSE_CAT_SELL')      OR define('HOUSE_CAT_SELL', 0);
 defined('HOUSE_CAT_RENT')      OR define('HOUSE_CAT_RENT', 1);
 defined('HOUSE_LIST_PAGE_SIZE')      OR define('HOUSE_LIST_PAGE_SIZE', 10);
+defined('HOT_HOUSE_NUM')      OR define('HOT_HOUSE_NUM', 10);
 
 
 
