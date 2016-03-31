@@ -46,6 +46,7 @@
 			<input type="hidden" name="<?php print_r($key); ?>" value="<?php print_r($value); ?>"/>
 		<?php endforeach; ?>
 			<input type="hidden" name="currentpage" value="<?php print_r($currentpage); ?>">
+			<input type="hidden" name="kw" value="<?php print_r($kw); ?>" />
 		</form>
 	</section>
 

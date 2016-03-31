@@ -26,7 +26,7 @@
 							<label for="inputPassword">密码</label>
 						</td>
 						<td>
-							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码">
+							<input type="text" name="password" id="inputPassword" class="form-control" placeholder="密码">
 						</td>
 					</tr>
 					

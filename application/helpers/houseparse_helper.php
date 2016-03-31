@@ -40,6 +40,24 @@ function parse_sell_subinfo_house($CI, $house, $result = array()) {
 	return $result;
 }
 
+function parse_hot_sell_list_item($CI, $house) {
+	if (!isset($house) || empty($house) || !is_array($house)) {
+		return $house;
+	}
+	$new_house = array();
+	$new_house['hid'] = $house['hid'];
+	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
+	
+	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
+	$new_house['community'] = parse_house_community($CI, $house);
+	
+	$new_house['size'] = parse_get_by_key($CI, $house, 'size', '');
+
+	$new_house['price'] = parse_get_by_key($CI, $house, 'price');
+	return $new_house;
+}
+
 
 // ***************************************
 // ***************************************
@@ -85,15 +103,15 @@ function parse_sell_house_item($CI, $house) {
 	// poster 信息
 	$poster = array();
 	if (!empty($house['uid'])) {
-	    $poster['is_realtor'] = TRUE;
 	    array_merge_by_key($house, $poster, array(
     			'uid',
     			'user_name', 'true_name',
     			'sex',
     			'contact_tel', 'contact_mobile',
     			'qqchat', 'wechat', 'email',
-    			'avatar'
+    			'avatar', 'gid'
     	));
+	    $poster['is_realtor'] = $poster['gid'] < USER_PERSIONAL;
 	} else {
 	    $poster['is_realtor'] = FALSE;
 	}
@@ -288,6 +306,26 @@ function parse_rent_subinfo_house($CI, $house, $result = array()) {
 	return $result;
 }
 
+function parse_hot_rent_list_item($CI, $house) {
+	if (!isset($house) || empty($house) || !is_array($house)) {
+		return $house;
+	}
+	$new_house = array();
+	$new_house['hid'] = $house['hid'];
+	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
+	
+	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
+	$new_house['community'] = parse_house_community($CI, $house);
+	
+	$new_house['size'] = parse_get_by_key($CI, $house, 'size');
+
+	$new_house['price'] = parse_get_by_key($CI, $house, 'price');
+	
+	$new_house['subinfo_roomtype'] = to_room_type($house);
+	return $new_house;
+}
+
 function loadRentFilterInfos($CI) {
 	loadCommonFilterInfos($CI, FALSE);
 	$CI->filters_price = array(
@@ -360,15 +398,15 @@ function parse_rent_house_item($CI, $house) {
 	// poster 信息
 	$poster = array();
 	if (!empty($house['uid'])) {
-	    $poster['is_realtor'] = TRUE;
 	    array_merge_by_key($house, $poster, array(
     			'uid',
     			'user_name', 'true_name',
     			'sex',
     			'contact_tel', 'contact_mobile',
     			'qqchat', 'wechat', 'email',
-    			'avatar'
+    			'avatar', 'gid'
     	));
+    	$poster['is_realtor'] = $poster['gid'] < USER_PERSIONAL;
 	} else {
 	    $poster['is_realtor'] = FALSE;
 	}
