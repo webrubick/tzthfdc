@@ -8,6 +8,8 @@ class Renthouse_model extends MY_Model {
 	
 	// 表名
 	const TABLE_NAME = 'tab_renthouse';
+	
+	protected $sort_col = ' order by create_time desc ';
 
 	private $COLS = array(
 		'hid',
@@ -68,9 +70,9 @@ class Renthouse_model extends MY_Model {
 		$sub_where = to_where_by_raw_conditions($this, $conditions); //to_where_str($this, $conditions)
 		if (isset($kw) && !empty($kw)) {
 			$kw = $this->db->escape_like_str($kw);
-			$sub_sql = "select * from tab_renthouse where {$sub_where} and (title like '%{$kw}%' or community like '%{$kw}%') order by update_time desc limit {$offset},{$page_size}";
+			$sub_sql = "select * from tab_renthouse where {$sub_where} and (title like '%{$kw}%' or community like '%{$kw}%') {$this->sort_col} limit {$offset},{$page_size}";
 		} else {
-			$sub_sql = "select * from tab_renthouse where {$sub_where} order by update_time desc limit {$offset},{$page_size}";
+			$sub_sql = "select * from tab_renthouse where {$sub_where} {$this->sort_col} limit {$offset},{$page_size}";
 		}
 		$select = to_select_str($this, array('*'), 'h.') ;
 		$sql = "select {$select} from ({$sub_sql}) h;";
