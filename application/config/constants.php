@@ -88,7 +88,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('USER_SUPER_ADMIN')      OR define('USER_SUPER_ADMIN', 1);
 defined('USER_ADMIN_MANAGER')      OR define('USER_ADMIN_MANAGER', 2);
 defined('USER_ADMIN')      OR define('USER_ADMIN', 3);
-defined('USER_PERSIONAL')      OR define('USER_PERSIONAL', 3);
+defined('USER_PERSIONAL')      OR define('USER_PERSIONAL', 4);
 
 
 

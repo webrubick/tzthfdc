@@ -1,7 +1,7 @@
 <aside id="sidebar">
 	<nav id="main-nav">
 		<!--<a href="<?php echo 'admin'; ?>" class="ico-home"></a>-->
-		<?php $superUser = (isset($gid) && $gid == USER_SUPER_ADMIN);?>
+		<?php $superUser = (isset($gid) && $gid <= USER_ADMIN_MANAGER);?>
 		<?php $allowed = (isset($permission) && !empty($permission));?>
 		<?php if ($allowed) : ?>
 		<a href="javascript:void(0)" class="ico-nav" data-id="sn-house">管理房源</a>
