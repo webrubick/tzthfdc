@@ -53,9 +53,10 @@ class User_model extends MY_Model {
 		$this->setTable($this::TABLE_NAME);
 		return $this->getSingle(array('user_name'=>$user_name));	
 	}
+	
 	public function get_by_persion_name($user_name) {
 		$this->setTable($this::TABLE_NAME);
-		return $this->getSingle(array('user_name'=>$user_name, 'gid' => $this::PERSIONAL ));	
+		return $this->getSingle(array('user_name'=>$user_name, 'gid' => USER_PERSIONAL ));	
 	}
 
 	/**

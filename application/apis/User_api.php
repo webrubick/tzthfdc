@@ -49,15 +49,17 @@ class User_api extends API {
 	/**
 	 * 用户登录
 	 */
-	public function login($user_name, $user_pass, $code = NULL) {
+	public function login($user_name, $user_pass, $code = NULL, $verify_code = TRUE) {
 		if (!isset($user_name)) { return $this->ex(90001); }
 		if (!isset($user_pass)) { return $this->ex(90002); }
-		if (!isset($code)) { return $this->ex(90601); }
-		
-        $login_vercode = get_user_field('admin_login_vercode');
-		if (!isset($login_vercode) || $code != $login_vercode) {
-		    return $this->ex(90602);
-		}
+		if ($verify_code && !isset($code)) { return $this->ex(90601); }
+
+        if ($verify_code) {		
+            $login_vercode = get_user_field('admin_login_vercode');
+    		if (!isset($login_vercode) || strcasecmp($login_vercode, $code) !== 0) {
+    		    return $this->ex(90602);
+    		}
+        }
 		
 		$query_user = $this->user_model->get_by_name($user_name);
 		if (empty($query_user)) { return $this->ex(90003); }
@@ -69,15 +71,18 @@ class User_api extends API {
 		}
 	}
 	
-	public function login_personal($user_name, $user_pass, $code) {
+	public function login_personal($user_name, $user_pass, $code = NULL, $verify_code = TRUE) {
 	    if (!isset($user_name)) { return $this->ex(90001); }
 		if (!isset($user_pass)) { return $this->ex(90002); }
-		if (!isset($code)) { return $this->ex(90601); }
+		if ($verify_code && !isset($code)) { return $this->ex(90601); }
 		
-		$login_vercode = get_user_field('login_vercode');
-		if (!isset($login_vercode) || $code != $login_vercode) {
-		    return $this->ex(90602);
+		if ($verify_code) {
+		    $login_vercode = get_user_field('login_vercode');
+    		if (!isset($login_vercode) || strcasecmp($login_vercode, $code) !== 0) {
+    		    return $this->ex(90602);
+    		}
 		}
+		
         $query_user = $this->user_model->get_by_persion_name($user_name);
         if (empty($query_user)) {
             return $this->ex(90003);
@@ -140,7 +145,7 @@ class User_api extends API {
 			return $this->ex(90103);
 		}
 		// 如果成功返回login数据
-		return $this->login($parsed_user['user_name'], $user_pass);
+		return $this->login($parsed_user['user_name'], $user_pass, NULL, FALSE);
 	}
 
 	/**
@@ -153,7 +158,7 @@ class User_api extends API {
 		if (!isset($user['code']) || empty($user['code'])) { return $this->ex(90601); }
 		
 		$register_vercode = get_user_field('register_vercode');
-		if (!isset($register_vercode) || $user['code'] != $register_vercode) {
+		if (!isset($register_vercode) || strcasecmp($register_vercode, $user['code']) !== 0) {
 		    return $this->ex(90602);
 		}
 		
@@ -173,7 +178,7 @@ class User_api extends API {
 			return $this->ex(90103);
 		}
 		// 如果成功返回login数据
-		return $this->login($parsed_user['user_name'], $user_pass);
+		return $this->login_personal($parsed_user['user_name'], $user_pass, NULL, FALSE);
 	}
 
 
