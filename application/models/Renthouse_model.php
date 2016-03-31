@@ -95,7 +95,7 @@ class Renthouse_model extends MY_Model {
     			'sex',
     			'contact_tel', 'contact_mobile',
     			'qqchat', 'wechat', 'email',
-    			'avatar'), 'u.') ;
+    			'avatar', 'gid'), 'u.') ;
     			
         $sql = "select {$select} from ({$sub_sql}) h left join tab_user u on h.uid = u.uid;";
 		// print_r($sql);

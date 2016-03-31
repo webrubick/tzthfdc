@@ -103,15 +103,15 @@ function parse_sell_house_item($CI, $house) {
 	// poster 信息
 	$poster = array();
 	if (!empty($house['uid'])) {
-	    $poster['is_realtor'] = TRUE;
 	    array_merge_by_key($house, $poster, array(
     			'uid',
     			'user_name', 'true_name',
     			'sex',
     			'contact_tel', 'contact_mobile',
     			'qqchat', 'wechat', 'email',
-    			'avatar'
+    			'avatar', 'gid'
     	));
+	    $poster['is_realtor'] = $poster['gid'] < USER_PERSIONAL;
 	} else {
 	    $poster['is_realtor'] = FALSE;
 	}
@@ -398,15 +398,15 @@ function parse_rent_house_item($CI, $house) {
 	// poster 信息
 	$poster = array();
 	if (!empty($house['uid'])) {
-	    $poster['is_realtor'] = TRUE;
 	    array_merge_by_key($house, $poster, array(
     			'uid',
     			'user_name', 'true_name',
     			'sex',
     			'contact_tel', 'contact_mobile',
     			'qqchat', 'wechat', 'email',
-    			'avatar'
+    			'avatar', 'gid'
     	));
+    	$poster['is_realtor'] = $poster['gid'] < USER_PERSIONAL;
 	} else {
 	    $poster['is_realtor'] = FALSE;
 	}

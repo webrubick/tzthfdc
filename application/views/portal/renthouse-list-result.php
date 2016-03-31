@@ -29,7 +29,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp; <?php print_r(implode('&nbsp;/&nbsp;', $house['subinfo_house'])); ?>
 							<?php endif ; ?>
 						</div>
-						<div class="house-info">经纪人：<?php print_r($house['poster_name']); ?> &nbsp;&nbsp;&nbsp;&nbsp; 联系电话：<b><?php print_r($house['poster_mobile']); ?></b></div>
+						<div class="house-info">联系人：<?php print_r($house['poster_name']); ?> &nbsp;&nbsp;&nbsp;&nbsp; 联系电话：<b><?php print_r($house['poster_mobile']); ?></b></div>
 					</div>
 				</li>
 				<?php endforeach ; ?>
