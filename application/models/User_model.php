@@ -128,6 +128,7 @@ class User_model extends MY_Model {
 	public function get_all_but_self($uid) {
 		$this->setTable($this::TABLE_NAME);
 		$this->db->select(array('uid', 'user_name', 'true_name', 'permission'));
+		$this->db->where(array('gid' => USER_ADMIN));
 		$this->db->where_not_in('uid', array($uid));
 		return $this->getData();
 	}
