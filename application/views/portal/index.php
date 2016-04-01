@@ -17,6 +17,67 @@
 			</div>
 		</div>
     </section>
+
+	<div class="section-sep"></div>
+
+    <style>
+    .hot-house-block-container {
+        padding: 10px; overflow: hidden;
+    }
+    .hot-house-block-container > li, .hot-house-block-container >ul>li { display: inline-block; margin-left: 10px; }
+    
+    .hot-house-block { font-size: 16px; line-height:2.5em; width: 450px; }
+    .hot-house-block-title { height: 2em; font-size: 1.5em; line-height:2em; border-bottom: 1px dashed #ccc; }
+    .hot-house-block-title span { border-left: 5px solid #f46; padding-left: 0.5em; }
+    .hot-house-block-title .more { margin-left: 1em; font-size: .6em; color: #999; }
+    .hot-house-block-list { font-size: 0.9em; color: #999; width: 100%; }
+    .hot-house-block-list .dark { color: #000; }
+    .hot-house-block-list .highlight { color: #f46; }
+    </style>
+    <section class="sub-container fixed-sub-container">
+        <ul class="hot-house-block-container">
+            <li>
+                <div class="hot-house-block">
+                    <div class="hot-house-block-title">
+                        <span>热门出售房源</span>
+                        <a class="more" href="/sellhouse" target="_blank">查看更多 &gt;&gt;</a>
+                    </div>
+                    <table class="hot-house-block-list">
+<?php if (isset($sellhouses) && !empty($sellhouses)) :?>
+    <?php foreach($sellhouses as $house) :?>
+                        <tr>
+                            <td class="dark">[<a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['area']); ?></a>]</td>
+                            <td><a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['community']); ?></a></td>
+                            <td class="highlight"><?php print_r($house['price']); ?>万</td>
+                            <td class="size"><?php print_r($house['size']); ?>平米</td>
+                        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="hot-house-block">
+                    <div class="hot-house-block-title">
+                        <span>热门出租房源</span>
+                        <a class="more" href="/renthouse" target="_blank">查看更多 &gt;&gt;</a>
+                    </div>
+                    <table class="hot-house-block-list">
+<?php if (isset($renthouses) && !empty($renthouses)) :?>
+    <?php foreach($renthouses as $house) :?>
+                        <tr>
+                            <td class="dark">[<a href="/renthouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['area']); ?></a>]</td>
+                            <td><a href="/renthouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['community']); ?></a></td>
+                            <td class="highlight"><?php print_r($house['price']); ?>元</td>
+                            <td><?php print_r($house['subinfo_roomtype']); ?></td>
+                        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </section>
     
     <div class="section-sep"></div>
     
@@ -225,67 +286,6 @@
 		}
 		</script>
 	</section>
-
-	<div class="section-sep"></div>
-
-    <style>
-    .hot-house-block-container {
-        padding: 10px; overflow: hidden;
-    }
-    .hot-house-block-container > li, .hot-house-block-container >ul>li { display: inline-block; margin-left: 10px; }
-    
-    .hot-house-block { font-size: 16px; line-height:2.5em; width: 450px; }
-    .hot-house-block-title { height: 2em; font-size: 1.5em; line-height:2em; border-bottom: 1px dashed #ccc; }
-    .hot-house-block-title span { border-left: 5px solid #f46; padding-left: 0.5em; }
-    .hot-house-block-title .more { margin-left: 1em; font-size: .6em; color: #999; }
-    .hot-house-block-list { font-size: 0.9em; color: #999; width: 100%; }
-    .hot-house-block-list .dark { color: #000; }
-    .hot-house-block-list .highlight { color: #f46; }
-    </style>
-    <section class="sub-container fixed-sub-container">
-        <ul class="hot-house-block-container">
-            <li>
-                <div class="hot-house-block">
-                    <div class="hot-house-block-title">
-                        <span>热门出售房源</span>
-                        <a class="more" href="/sellhouse" target="_blank">查看更多 &gt;&gt;</a>
-                    </div>
-                    <table class="hot-house-block-list">
-<?php if (isset($sellhouses) && !empty($sellhouses)) :?>
-    <?php foreach($sellhouses as $house) :?>
-                        <tr>
-                            <td class="dark">[<a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['area']); ?></a>]</td>
-                            <td><a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['community']); ?></a></td>
-                            <td class="highlight"><?php print_r($house['price']); ?>万</td>
-                            <td class="size"><?php print_r($house['size']); ?>平米</td>
-                        </tr>
-    <?php endforeach; ?>
-<?php endif; ?>
-                    </table>
-                </div>
-            </li>
-            <li>
-                <div class="hot-house-block">
-                    <div class="hot-house-block-title">
-                        <span>热门出租房源</span>
-                        <a class="more" href="/renthouse" target="_blank">查看更多 &gt;&gt;</a>
-                    </div>
-                    <table class="hot-house-block-list">
-<?php if (isset($renthouses) && !empty($renthouses)) :?>
-    <?php foreach($renthouses as $house) :?>
-                        <tr>
-                            <td class="dark">[<a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['area']); ?></a>]</td>
-                            <td><a href="/sellhouse/<?php print_r($house['hid']); ?>" target="_blank"><?php print_r($house['community']); ?></a></td>
-                            <td class="highlight"><?php print_r($house['price']); ?>元</td>
-                            <td><?php print_r($house['subinfo_roomtype']); ?></td>
-                        </tr>
-    <?php endforeach; ?>
-<?php endif; ?>
-                    </table>
-                </div>
-            </li>
-        </ul>
-    </section>
 
 <!-- Footer -->
 <?php $this->load->view('portal/template/template-portal-footer'); ?>
