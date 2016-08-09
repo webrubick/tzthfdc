@@ -10,7 +10,7 @@ function is_login() {
 function is_super_user() {
     $CI =& get_instance();
     $gid = get_user_field('gid');
-	return isset($gid) && $gid == USER_SUPER_ADMIN;
+	return isset($gid) && $gid <= USER_ADMIN_MANAGER;
 }
 
 // 快捷的清除login信息
