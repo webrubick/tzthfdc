@@ -19,6 +19,7 @@ class Renthouse extends MY_Controller {
 	}
 
 	private function rent_list() {
+		$this->load_realtors();
 		// 分类信息
 		$this->cat = HOUSE_CAT_RENT;
 
