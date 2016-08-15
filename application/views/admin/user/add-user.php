@@ -47,6 +47,15 @@
 							<input type="text" name="contact_mobile" maxlength="11" id="inputMobile" class="form-control" placeholder="手机号" >
 						</td>
 					</tr>
+
+					<tr>
+						<td>
+							<label for="inputQQ">QQ</label>
+						</td>
+						<td>
+							<input type="text" name="qqchat" id="inputQQ" class="form-control" placeholder="QQ号" >
+						</td>
+					</tr>
 				</table>
 
 				<button class="btn btn-lg btn-primary btn-block login-btn" type="submit" onClick="return checkInput()">添加</button>

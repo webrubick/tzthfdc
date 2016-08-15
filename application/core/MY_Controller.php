@@ -76,6 +76,14 @@ class MY_Controller extends CI_Controller {
 	        }
         }
 	}
+
+	public function load_realtors() {
+	    $this->load->api('user_api');
+	    $result = $this->user_api->get_all_realtors();
+        if (is_ok_result($result)) {
+        	$this->realtors = $result['data'];
+        }
+	}
 	
 	public function check_super_user() {
 	    if (!is_super_user()) {

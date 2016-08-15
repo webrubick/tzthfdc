@@ -333,6 +333,14 @@ class User_api extends API {
 		}
 
 	}
+
+
+	// 其他
+	public function get_all_realtors()
+	{
+		$realtors = $this->user_model->get_all_realtors();
+		return $this->ok($realtors);
+	}
 }
 
 

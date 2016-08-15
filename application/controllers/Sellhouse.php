@@ -19,6 +19,7 @@ class Sellhouse extends MY_Controller {
 	}
 
 	private function sell_list() {
+		$this->load_realtors();
 		// 分类信息
 		$this->cat = HOUSE_CAT_SELL;
 
