@@ -33,8 +33,8 @@ function common_check_upload_input($CI) {
 
 function generate_fn($CI, $ext) {
 	$CI->load->helper('string');
-	$salt = random_string('alnum', 10);
-	return date('Y-m-d-H-i-s', time()).'-'.$salt.'.'.$ext;
+	$salt = random_string('alnum', 4);
+	return date('YmdHis', time()).'-'.$salt.'.'.$ext;
 }
 
 // =======================================

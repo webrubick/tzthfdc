@@ -108,16 +108,12 @@ function checkInput() {
 function uploadHouseImage(resultData) {
 	postIsProgressing = showProgress();
 	localHouseConfig.resultData = resultData;
-	if (inputImage.data('src')) { // 如果没有设置图片资源
-		doOnUploadSuccess();
-		return ;
-	}
-	if (!inputImage.attr('src')) {
+	if (!ZXXFILE || ZXXFILE.filteredFiles.length < 1) {
 		doOnUploadSuccess();
 		return ;
 	}
 	ZXXFILE.url = localHouseConfig.uploadUrl + "?hid=" + localHouseConfig.resultData.data.hid;
-	ZXXFILE.funUploadFile();
+	ZXXFILE.upload();
 }
 
 function doOnUploadSuccess (file, responseUrl) {

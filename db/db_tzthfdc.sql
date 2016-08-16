@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `db_tzthfdc`.`Tab_RentHouse` (
   `uid` INT NULL,
   `poster_name` VARCHAR(45) NULL COMMENT '联系人名称',
   `poster_contact` VARCHAR(50) NULL COMMENT '联系人联系号码',
+  `f` TINYINT UNSIGNED NULL COMMENT '额外的字段',
   PRIMARY KEY (`hid`))
 ENGINE = InnoDB;
 
@@ -193,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `db_tzthfdc`.`Tab_SellHouse` (
   `uid` INT NULL COMMENT '用户ID',
   `poster_name` VARCHAR(45) NULL COMMENT '联系人名称',
   `poster_contact` VARCHAR(50) NULL COMMENT '联系人联系方式',
+  `f` TINYINT UNSIGNED NULL COMMENT '额外的字段',
   PRIMARY KEY (`hid`))
 ENGINE = InnoDB;
 

@@ -2,6 +2,8 @@
 <?php $this->load->view('portal/template/template-portal-header'); ?>
 
 	<link href="public/css/portal/house-info.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="public/scripts/jquery.scrollto.min.js"></script>
+
 	<!-- content -->
 <?php if (isset($house)) : ?>
 	<section class="house-info-container">
@@ -17,15 +19,21 @@
 				</div>
 				<div class="house-content">
 					<div class="house-gallery">
-					<?php if (!isset($house['images']) || empty($house['images'])) : ?>
+					<?php if (empty($house['preview_image'])) : ?>
 						<div class="empty-img-placeholder">
 							<img src="public/img/portal/house_info_placeholder.jpg"/>
 						</div>
 					<?php else : ?>
 						<div class="img-container">
-							<img src="<?php print_r($house['images']); ?>" />
+							<img src="<?php print_r($house['preview_image']); ?>" />
+						</div>
+						<div class="more-image">
+							<a href="javascript:void(0);" onclick="scrollToMoreImage()">更多图片</a>
 						</div>
 						<script type="text/javascript">
+						function scrollToMoreImage() {
+							$('html, body').scrollTo('#more-image', 500);
+						}
 						var adjustImgSize = function(img, boxWidth, boxHeight) {
 					        // var imgWidth=img.width();
 					        // var imgHeight=img.height();
@@ -136,6 +144,15 @@
 						<?php $house_details = str_replace("\n", '<br/>', $house_details); ?>
 						$('.house-detail div.detail-text').html('<?php echo $house_details; ?>');
 						</script>
+<?php $images = $house['images'] ; ?>
+<?php if (isset($images) && !empty($images)) : ?>
+						<a id="more-image" name="more-image"></a>
+						<div class="detail-images">
+	<?php foreach ($images as $image) : ?>
+							<p><img src="<?php print_r($image); ?>" /></p>
+	<?php endforeach;?>
+						</div>
+<?php endif; ?>
 					</div>
 				</div>
 			</div>

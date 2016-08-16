@@ -275,6 +275,7 @@
 				<?php $this->load->view('admin/house/upload-house'); ?>
 				<script type="text/javascript">
 				prepare_upload('<?php echo base_url('adminhouse/rent_image'); ?>');
+				localHouseConfig.delImageUrl = '<?php echo base_url('adminhouse/del_rent_image'); ?>';
 				</script>
 
 				<!-- 详细信息 -->

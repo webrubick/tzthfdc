@@ -145,7 +145,8 @@ class User_model extends MY_Model {
 	public function get_all_realtors() {
 		$this->setTable($this::TABLE_NAME);
 		$this->db->select(array('uid', 'user_name', 'true_name', 'contact_tel', 'contact_mobile', 'qqchat', 'wechat', 'email', 'address', 'avatar'));
-		$this->db->where(array('gid' => USER_ADMIN, 'permission' => 1));
+		$this->db->where_in('gid', array(USER_ADMIN, USER_ADMIN_MANAGER));
+		$this->db->where(array('permission' => 1));
 		return $this->getData();
 	}
 }

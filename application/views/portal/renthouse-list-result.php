@@ -12,10 +12,10 @@
 				<li>
 					<?php $item_url_path = "renthouse/{$house['hid']}" ; ?>
 					<a class="media-cap" href="<?php print_r($item_url_path); ?>" target="_blank">
-						<?php if (empty($house['images'])) : ?>
+						<?php if (empty($house['preview_image'])) : ?>
 						<img src="public/img/portal/list_default_house_img.png"/>
 						<?php else : ?>
-						<img src="<?php print_r($house['images']); ?>"/>
+						<img src="<?php print_r($house['preview_image']); ?>"/>
 						<?php endif ; ?>
 					</a>
 					<div class="media-body">

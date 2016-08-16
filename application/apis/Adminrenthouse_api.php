@@ -28,6 +28,11 @@ class Adminrenthouse_api extends API {
 		11015 => '房源图片保存失败',
 		11016 => '联系人为空',
 		11017 => '联系方式为空',
+
+		11018 => '未指定操作用户',
+		11019 => '未指定房源',
+		11020 => '没有指定图片',
+		11021 => '删除图片失败',
 		
 		11100 => '',
 	);
@@ -96,7 +101,7 @@ class Adminrenthouse_api extends API {
 			}
 		}
 		
-		if ($return_list) { return $this->sell_list(); }
+		if ($return_list) { return $this->rent_list(); }
 
 		return $this->ok();
 	}
@@ -106,14 +111,16 @@ class Adminrenthouse_api extends API {
 
 		if (!isset($uid)) { return $this->ex(11007); }
 		if (!isset($hid) || empty($hid)) { return $this->ex(11008); }
-
+		
+		// 删除图片
+		$this->del_all_rent_images($uid, $hid);
 		$del_result = $this->renthouse_model->del_by_hid($hid);
 		if (!$del_result) {
 			log_message('error', 'del_rent db failed');
 			return $this->ex(11009);
 		}
 		
-		if ($return_list) { return $this->sell_list(); }
+		if ($return_list) { return $this->rent_list(); }
 
 		return $this->ok();
 	}
@@ -164,20 +171,70 @@ class Adminrenthouse_api extends API {
 		$save_result = save_house_image($this, $uid, $hid, 'rent');
 
 		if (is_ok_result($save_result)) {
-			$images = $save_result['data']; // 新的头像地址
+			$image = $save_result['data'];
+			$images = $rent_house['images'];
+			if (empty($images)) {
+				$images = $image;
+			} else {
+				$images = $images . ',' . $image;
+			}
 			$update_result = $this->renthouse_model->update_by_hid($hid, array('images' => $images));
 			if (!$update_result) {
 				log_message('error', 'update_rent_image db failed');
 				// 删除文件，因为并没有更新成功
-				delete_house_image($images);
+				delete_house_image($this, $image);
 				return $this->ex(11014);
 			} else {
-				delete_old_house_image($this, $rent_house['images'], $images); // 删除老的头像文件
 				$rent_house['images'] = $images;
 				return $this->ok($rent_house);
 			}
 		} else {
 			return $this->ex(11015);
+		}
+	}
+
+	public function del_rent_image($uid, $hid, $image) {
+		if (!is_login()) { return $this->un_login(); }
+
+		if (!isset($uid)) { return $this->ex(10018); }
+
+		$rent_house = $this->renthouse_model->get_by_hid_by_uid($uid, $hid);
+		if (!isset($rent_house) || empty($rent_house)) {
+			return $this->ex(11019);
+		}
+		$images = $rent_house['images'];
+		if (empty($images)) {
+			return $this->ex(11020);
+		}
+		$images = explode(',', $images);
+		$idx = array_search($image, $images);
+		if ($idx === FALSE) {
+			return $this->ex(11020);
+		}
+		unset($images[$idx]);
+		$images = implode(',', $images);
+		$update_result = $this->renthouse_model->update_by_hid($hid, array('images' => $images));
+		if (!$update_result) {
+			return $this->ex(11021);
+		}
+		$this->load->helper('upload');
+		delete_house_image($this, $image);
+		return $this->ok();
+	}
+
+	private function del_all_rent_images($uid, $hid) {
+		$rent_house = $this->renthouse_model->get_by_hid_by_uid($uid, $hid);
+		if (!isset($rent_house) || empty($rent_house)) {
+			return;
+		}
+		$images = $rent_house['images'];
+		if (empty($images)) {
+			return;
+		}
+		$images = explode(',', $images);
+		$this->load->helper('upload');
+		foreach ($images as $image) {
+			delete_house_image($this, $image);
 		}
 	}
 	
@@ -210,15 +267,20 @@ class Adminrenthouse_api extends API {
 		$save_result = save_house_image($this, 'tmp', $hid, 'rent');
 
 		if (is_ok_result($save_result)) {
-			$images = $save_result['data']; // 新的头像地址
+			$image = $save_result['data'];
+			$images = $rent_house['images'];
+			if (empty($images)) {
+				$images = $image;
+			} else {
+				$images = $images . ',' . $image;
+			}
 			$update_result = $this->renthouse_model->update_by_hid($hid, array('images' => $images));
 			if (!$update_result) {
 				log_message('error', 'update_rent_image db failed');
 				// 删除文件，因为并没有更新成功
-				delete_house_image($images);
+				delete_house_image($this, $image);
 				return $this->ex(11014);
 			} else {
-				delete_old_house_image($this, $rent_house['images'], $images); // 删除老的头像文件
 				$rent_house['images'] = $images;
 				return $this->ok($rent_house);
 			}

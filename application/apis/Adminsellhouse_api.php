@@ -29,6 +29,11 @@ class Adminsellhouse_api extends API {
 		10016 => '联系人为空',
 		10017 => '联系方式为空',
 
+		10018 => '未指定操作用户',
+		10019 => '未指定房源',
+		10020 => '没有指定图片',
+		10021 => '删除图片失败',
+
 	);
 
 	public function __construct() {
@@ -107,6 +112,8 @@ class Adminsellhouse_api extends API {
 		if (!isset($uid)) { return $this->ex(10007); }
 		if (!isset($hid) || empty($hid)) { return $this->ex(10008); }
 
+		// 删除图片
+		$this->del_all_sell_images($uid, $hid);
 		$del_result = $this->sellhouse_model->del_by_hid($hid);
 		if (!$del_result) {
 			log_message('error', 'del_sell db failed');
@@ -158,20 +165,70 @@ class Adminsellhouse_api extends API {
 		$save_result = save_house_image($this, $uid, $hid, 'sell');
 
 		if (is_ok_result($save_result)) {
-			$images = $save_result['data']; // 新的头像地址
+			$image = $save_result['data'];
+			$images = $sell_house['images'];
+			if (empty($images)) {
+				$images = $image;
+			} else {
+				$images = $images . ',' . $image;
+			}
 			$update_result = $this->sellhouse_model->update_by_hid($hid, array('images' => $images));
 			if (!$update_result) {
 				log_message('error', 'update_sell_image db failed');
 				// 删除文件，因为并没有更新成功
-				delete_house_image($images);
+				delete_house_image($this, $image);
 				return $this->ex(10014);
 			} else {
-				delete_old_house_image($this, $sell_house['images'], $images); // 删除老的头像文件
 				$sell_house['images'] = $images;
 				return $this->ok($sell_house);
 			}
 		} else {
 			return $this->ex(10015);
+		}
+	}
+
+	public function del_sell_image($uid, $hid, $image) {
+		if (!is_login()) { return $this->un_login(); }
+
+		if (!isset($uid)) { return $this->ex(10018); }
+
+		$sell_house = $this->sellhouse_model->get_by_hid_by_uid($uid, $hid);
+		if (!isset($sell_house) || empty($sell_house)) {
+			return $this->ex(10019);
+		}
+		$images = $sell_house['images'];
+		if (empty($images)) {
+			return $this->ex(10020);
+		}
+		$images = explode(',', $images);
+		$idx = array_search($image, $images);
+		if ($idx === FALSE) {
+			return $this->ex(10020);
+		}
+		unset($images[$idx]);
+		$images = implode(',', $images);
+		$update_result = $this->sellhouse_model->update_by_hid($hid, array('images' => $images));
+		if (!$update_result) {
+			return $this->ex(10021);
+		}
+		$this->load->helper('upload');
+		delete_house_image($this, $image);
+		return $this->ok();
+	}
+
+	private function del_all_sell_images($uid, $hid) {
+		$sell_house = $this->sellhouse_model->get_by_hid_by_uid($uid, $hid);
+		if (!isset($sell_house) || empty($sell_house)) {
+			return;
+		}
+		$images = $sell_house['images'];
+		if (empty($images)) {
+			return;
+		}
+		$images = explode(',', $images);
+		$this->load->helper('upload');
+		foreach ($images as $image) {
+			delete_house_image($this, $image);
 		}
 	}
 
@@ -204,15 +261,20 @@ class Adminsellhouse_api extends API {
 		$save_result = save_house_image($this, 'tmp', $hid, 'sell');
 
 		if (is_ok_result($save_result)) {
-			$images = $save_result['data']; // 新的头像地址
+			$image = $save_result['data'];
+			$images = $sell_house['images'];
+			if (empty($images)) {
+				$images = $image;
+			} else {
+				$images = $images . ',' . $image;
+			}
 			$update_result = $this->sellhouse_model->update_by_hid($hid, array('images' => $images));
 			if (!$update_result) {
 				log_message('error', 'update_sell_image db failed');
 				// 删除文件，因为并没有更新成功
-				delete_house_image($images);
+				delete_house_image($this, $image);
 				return $this->ex(10014);
 			} else {
-				delete_old_house_image($this, $sell_house['images'], $images); // 删除老的头像文件
 				$sell_house['images'] = $images;
 				return $this->ok($sell_house);
 			}

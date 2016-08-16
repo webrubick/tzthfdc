@@ -30,6 +30,23 @@ function to_room_title($house) {
 	return $room_title_str; 
 }
 
+function to_preview_and_images($src_house) {
+	$ret = array();
+	$ret['images'] = NULL;
+	$ret['preview_image'] = NULL;
+	$images = '';
+	if (array_key_exists('images', $src_house)) {
+		$val = $src_house['images'];
+		if (!empty($val)) {
+			$images = $val;
+		}
+	}
+	if (!empty($images)) {
+		$ret['images'] = explode(',', $images);
+		$ret['preview_image'] = $ret['images'][0];
+	}
+	return $ret;
+}
 
 function loadCommonInfos($CI) {
     if (!isset($CI->communitys) || empty($CI->communitys)) {
