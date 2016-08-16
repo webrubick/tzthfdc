@@ -76,6 +76,7 @@
     margin-bottom: 40px;
     position: relative;
     float: left;
+    border: 1px solid #e6e6e6;
 }
 
 .empty-img-placeholder {
@@ -99,6 +100,14 @@
     width: 300px;
     text-align: center;
     line-height: 300px;
+}
+.house-gallery .more-image {
+    border-top: 1px solid #e6e6e6;
+    padding: 10px;
+}
+
+.more-image a {
+    text-decoration: underline;
 }
 
 .house-price {
@@ -179,6 +188,15 @@
     line-height: 1.8;
     word-break: break-all;
     color: #666;
+}
+
+.detail-images {
+}
+.detail-images p {
+    margin-top: 1em;
+}
+.detail-images img {
+    width: 100%;
 }
 
 

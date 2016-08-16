@@ -15,7 +15,7 @@ function parse_sell_list_item($CI, $house) {
 	}
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
 	$new_house['subinfo_area'] = parse_house_area_community($CI, $house);
 	$new_house['subinfo_house'] = parse_sell_subinfo_house($CI, $house);
@@ -46,7 +46,7 @@ function parse_hot_sell_list_item($CI, $house) {
 	}
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
 	
 	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
@@ -71,7 +71,7 @@ function parse_sell_house_item($CI, $house) {
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 
 	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
 	$new_house['community'] = parse_house_community($CI, $house);
@@ -279,7 +279,7 @@ function parse_rent_list_item($CI, $house) {
 	}
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
 	$new_house['subinfo_area'] = parse_house_area_community($CI, $house);
 	$new_house['subinfo_house'] = parse_rent_subinfo_house($CI, $house);
@@ -312,7 +312,7 @@ function parse_hot_rent_list_item($CI, $house) {
 	}
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
 	
 	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
@@ -371,7 +371,7 @@ function parse_rent_house_item($CI, $house) {
 	$new_house = array();
 	$new_house['hid'] = $house['hid'];
 	$new_house['title'] = parse_get_by_key($CI, $house, 'title');
-	$new_house['images'] = parse_get_by_key($CI, $house, 'images', '');
+	parse_images($CI, $new_house, $house);
 
 	$new_house['area'] = parse_from_attr_array($CI, $house, 'aid', 'areas', 'area_name');
 	$new_house['community'] = parse_house_community($CI, $house);
@@ -426,6 +426,12 @@ function parse_rent_house_item($CI, $house) {
 // util
 // ***************************************
 // ***************************************
+function parse_images($CI, &$house, $src_house) {
+	$ret = to_preview_and_images($src_house);
+	$house['images'] = $ret['images'];
+	$house['preview_image'] = $ret['preview_image'];
+}
+
 function parse_get_by_key($CI, $house, $key, $ph = '-') {
 	if (array_key_exists($key, $house)) {
 		$val = $house[$key];

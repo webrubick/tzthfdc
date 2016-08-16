@@ -168,6 +168,16 @@ class Adminhouse extends MY_Controller {
 		echo json_encode($api_result);
 	}
 
+	public function del_sell_image() {
+		$this->check_state_api('POST');
+		$uid = get_session_uid();
+		$hid = $this->check_param_api('hid');
+		$image = $this->check_param_api('image');
+		$this->load->api('adminsellhouse_api');
+		$api_result = $this->adminsellhouse_api->del_sell_image($uid, $hid, $image);
+		echo json_encode($api_result);
+	}
+
 
 
 	// **************************************************
@@ -259,6 +269,16 @@ class Adminhouse extends MY_Controller {
 
 		$this->load->api('adminrenthouse_api');
 		$api_result = $this->adminrenthouse_api->update_rent_image($uid, $hid);
+		echo json_encode($api_result);
+	}
+
+	public function del_rent_image() {
+		$this->check_state_api('POST');
+		$uid = get_session_uid();
+		$hid = $this->check_param_api('hid');
+		$image = $this->check_param_api('image');
+		$this->load->api('adminrenthouse_api');
+		$api_result = $this->adminrenthouse_api->del_rent_image($uid, $hid, $image);
 		echo json_encode($api_result);
 	}
 

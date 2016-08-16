@@ -9,7 +9,7 @@ class Sellhouse_model extends MY_Model {
 	// 表名
 	const TABLE_NAME = 'tab_sellhouse';
 	
-	protected $sort_col = ' order by create_time desc ';
+	protected $sort_col = ' order by update_time desc ';
 
 	private $COLS = array(
 		'hid',
