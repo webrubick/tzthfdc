@@ -76,7 +76,7 @@ function prepare_upload(uploadUrl) {
 	    filter: function(files) {
 	        var arrFiles = [];
 	        for (var i = 0, file; file = files[i]; i++) {
-	            if ((!file.type || file.type.indexOf("image") == 0) && /\.(?:jpg|png|gif|jpeg)$/.test(file.name) /* for IE10 */) {
+	            if ((!file.type || file.type.indexOf("image") == 0) && /\.(?:jpg|png|gif|jpeg)$/i.test(file.name) /* for IE10 */) {
 	            	if (file.size >= 512000000) {
 						alert('您这张"' + file.name + '"图片大小过大，应小于500k');
 					} else {

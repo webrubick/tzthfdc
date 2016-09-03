@@ -82,7 +82,6 @@
                 <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php print_r($realtor['qqchat']); ?>&site=tzfc.com&menu=yes" target="_blank">
                     <img border="0" src="http://wpa.qq.com/pa?p=2:<?php print_r($realtor['qqchat']); ?>:41" title="我是<?php print_r($realtor['true_name']); ?>，请给我发消息"/>
                 </a>
-                <p><?php echo $realtor['true_name'];?></p>
             </li>
 <?php endif; ?>
 <?php endforeach; ?>
